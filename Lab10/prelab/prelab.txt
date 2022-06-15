@@ -1,0 +1,96 @@
+-------------------------
+-			-
+- Answers to prelab	-
+- questions		-
+-			-
+-------------------------
+
+/* review QN format slides */
+/* review prelab/lab_a.c and exercise/lab_b.c */
+
+/* append output of lab_a.c */
+/* here */
+
+Integers are 32 bits long
+Floating point number: '1.000000e+01'
+Proving floating point has limits by adding Epsilon
+Epsilon value '2.220446e-16' didn't add
+
+Conversion test
+
+-----------------------------------------------------------------------------
+/* 3 */
+The addition didn't work. The way to prove this is seeing if the original
+double value "fnum1" is equal to the sum "fnum2". This shows that by adding
+Epsilon to the double 10.0, doesn't change the value of the double 10.0. 
+This makes sense because the value of Epsilon is supposed to symbolize the 
+precision of the double data type. Essentially the smallest difference 
+between to adjacent numbers that is able to be represented by a floating 
+point.
+
+-----------------------------------------------------------------------------
+/* Qn conversion */
+Conversion test
+
+Started with '0.000000' converted to qn0 = '0' decimal and then back to '0.000000'
+QN '0' decimal in binary is 	[0000000000000000]
+
+
+Started with '12.250000' converted to qn3 = '98' decimal and then back to '12.250000'
+QN '98' decimal in binary is 	[0000000001100010]
+
+
+Started with '12.062500' converted to qn3 = '96' decimal and then back to '12.000000'
+QN '96' decimal in binary is 	[0000000001100000]
+
+
+Started with '12.062500' converted to qn4 = '193' decimal and then back to '12.062500'
+QN '193' decimal in binary is 	[0000000011000001]
+
+1. A qn0 number is an integer, qn0 means that the precision between two adjacent
+   numbers is exactly 2^0 or 1...
+
+2. No data loss 
+
+3. Yes data loss... 12.0625 --> 12.0000, has to do with only having space 
+   for 3 fractional bits when 12.0625 clearly has 4 fractional bits
+
+4. No data loss... 4 fractional bits == win
+
+-----------------------------------------------------------------------------
+
+/* Qn number creation */
+Qm.n fixed point number
+N = number of bits = m + n + 1 (sign bit)
+m = bits for unsigned int
+n = fractional bits
+range of numbers = [-2^m, 2^m - 1]
+resolution = 2^-n
+SIGN: 1 if negative and 0 if positive
+-----------------------------------------------------------------------------
+
+/* Qn addition/subtraction issues */
+Result keeps the same number of fractional bits. If both are near max value
+of the same sign, the result will require m+1 bits for the integer part.
+-----------------------------------------------------------------------------
+
+/* Qn mult issues */
+Product of Qx.y and Qz.w is the Q number Q(x+z).(y+w)
+Shift answer right n bits
+-----------------------------------------------------------------------------
+
+/* Qn divide issues */
+Numerator must be shifted left n bits before dividing.
+-----------------------------------------------------------------------------
+
+/* Convert from positive Qn to negative Qn */
+Take the positive qn number in binary. Find 2's complement,
+flip the bits and add 1.
+-----------------------------------------------------------------------------
+
+/* convert float to Qn */
+Multiply by 2^n and convert to int
+
+/* convert from Qn to float */
+Cast Qn to float and divide by 2^n
+-----------------------------------------------------------------------------

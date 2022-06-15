@@ -1,0 +1,36 @@
+------Test1: ./quadTest -a 0 -b 0 -c 1
+Error: -a must be non-zero
+Program to find real and complex roots of quadratic polynomials
+    f(x) = ax**2 + bx + c
+usage: quadTest -a a -b b -c c
+e.g. ./quadTest -a 1 -b 0 -c 1
+
+
+The roots of: 0x**2 + 0x + 1
+  Root1: -nan + -nani
+  Root2: -nan + nani
+Elapsed CPU Time (timer) = 0.020000 sec.
+Elapsed CPU Time per iteration (timer, 1500000) = 1.33333e-08 sec.
+ 
+------Test2: ./quadTest -a 1 -b 0
+Error: you must specify -a -b and -c parameters
+Program to find real and complex roots of quadratic polynomials
+    f(x) = ax**2 + bx + c
+usage: quadTest -a a -b b -c c
+e.g. ./quadTest -a 1 -b 0 -c 1
+
+
+The roots of: 1x**2 + 0x + nan
+  Root1: nan + nani
+  Root2: nan + -nani
+Elapsed CPU Time (timer) = 0.020000 sec.
+Elapsed CPU Time per iteration (timer, 1500000) = 1.33333e-08 sec.
+ 
+------Test1: ./quadTest -a 1 -b 0 -c 1
+
+
+The roots of: 1x**2 + 0x + 1
+  Root1: 0 + 1i
+  Root2: -0 + -1i
+Elapsed CPU Time (timer) = 0.030000 sec.
+Elapsed CPU Time per iteration (timer, 1500000) = 2e-08 sec.

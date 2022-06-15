@@ -1,0 +1,40 @@
+---------------------------------
+-	Analysis.txt		-
+-	by Zeb Hollinger	-
+---------------------------------
+
+/* Choosing the correctional polynomial size */
+Since there was no specified order of polynomial to use for the correctional
+polynomial, that meant that some testing had to be done. This way I would be
+positive that the order of polynomial I chose is the one that best fits the
+'ideal' data. To do this, I generated the coefficients for polynomials 
+of order 2 through 5. This was done by the help of the hw11.c which takes 
+in the realData and finds a solution vector / polynomial for any order.
+I tested each order of poly in the correction.c file and ran
+'make correct' which calculates the error using detError. I compared that
+data from each correctional polynomial as well as comparing each one to 
+the base error to make sure that I wasn't taking a step back by increasing
+the error. 
+
+In this case each correctional poly reduced the 'Norm of residuals' error, 
+and both 'R Squared' and 'Pearson's Correlation' also neared a value of 1. 
+This statement was true until I tested a poly of order 5 which ended up with
+a larger Norm of residuals error than the previous poly did. This is how I 
+ended up using the order 4 correctional polynomial.
+
+
+/* Analyzing the measured data */
+We used input parsing (get_opt_long), and a data set in hw11.c to apply
+our knowledge about least squares approximation to produce a polynomial
+of any order > 1 that fits the data as best as possible. The method for 
+solving the solution vector was done by using the Normal mode Least squares
+by using the GSL library to do Matrix and vector math. 
+
+The best polynomial was then put into correction.c which was then used
+to produce data that was plotted on a graph along with the two other curves
+that used the raw data from the 'realDevice' and the ideal data. It's hard
+to see on the PNG, but the corrected line is green and almost identically 
+matches the ideal line on the graph. This is what we want to see because that
+means that by using the Least squares data fitting method allowed us to match
+the ideal data perfectly. 
+

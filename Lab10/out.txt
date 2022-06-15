@@ -1,0 +1,9 @@
+Found the root 0.000101 using Qn 25 integer bisection.
+Found the root 0.000101 using float bisection.
+
+Qn 25 error= 0.000000
+Elapsed CPU Time (timer) = 0.770000 sec.
+Elapsed CPU Time per iteration (timer, 2500000) = 3.08e-07 sec.
+
+Elapsed CPU Time (timer) = 0.820000 sec.
+Elapsed CPU Time per iteration (timer, 2500000) = 3.28e-07 sec.

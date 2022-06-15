@@ -1,0 +1,85 @@
+---------------------------------
+-				-
+-	analysis.txt		-
+-	by Zeb Hollinger	-
+-				-
+---------------------------------
+
+/* Analytic justification of choice of 'n' value to use */
+/* Your analysis must include a discussion on how you arrived at your Qn value */
+Finding the correct Qn value was quite simple and evaluative. I first learned
+that a Qn value of 32 was too large for obvious reasons(size of Long = 32bits.
+Then I implemented the error printout for the difference between the two 
+bisection methods. This allowed me to see how the smaller the Qn number is,
+the larger the difference between the two results can be. This is explained 
+below. I ended up getting to Qn=24 which gave me an error of about .03%. This
+sounds good, but it isn't exactly zero so the search continued. Setting Qn
+to 25 gave me error percentages of zero and setting it one more at 26 gave
+me an outrageously large value for the root as well as the error. This tells
+me that the threshold for the Qn value to be too large. This means that when
+the conversions took place, the shift amount was too large and ended up with
+a number that is way off due to the number of bits that were shifted. 
+
+
+/* Why does changing the Qn value change the error? */
+The Qn value represents the fractional bits in the number. This means that the
+integer will be less precise than the float counterpart. Thus the roots found 
+from the integer bisection will be less precise than the float bisection. Both
+numbers won't be the same which means that the error won't be zero.
+
+
+/* Try a Qn of 32, what happens? Why? */
+When trying a Qn value of 32, there is a a ton of the same warnings when the
+C file is getting compiled. It says that the left shift amount is larger than
+the width of the type. This occurs when the fix to float function is called.
+The conversion requires a shift to happen but when the Qn number is too big
+for the actual number then it will not correctly convert the number and
+return the wrong number. This is an issue because it is trying to shift
+32 bits, but the size of a Long is also 32 bits...This is bad so the Qn number
+I used is less than that.
+
+
+
+/* How much slower is the true SW floating point implementation than the QN implementation? */
+
+----------------------------------------------------------------|
+Found the root 0.000101 using soft float bisection.		|
+Elapsed CPU Time (timer) = 13.24 sec.				|
+Elapsed CPU Time per Iteration (timer, 2500000) =  5.30e-06 sec.|
+----------------------------------------------------------------|
+
+When comparing this time to the QN implementation at ZERO optimization,
+the QN implementation is approximately 88.7% faster. This is a HUGE difference
+and it really shines light on the power of using QN arithmetic for solving
+different math problems. It can truly be an advantage at times. Especially
+when certain problems might have very large data sets. Every second of 
+execution time is valuable when the size of the data sets increases.
+
+
+
+
+/* Timing chart of tests using different optimization levels */
+
+------------------------------------------------------------------------------
+|   Opt Level	| Qn Total Time	| Qn iteration	| Float T. Time	| Float iter |
+------------------------------------------------------------------------------
+|     -O0	|   1.49 sec	|  5.96e-7 sec	|   1.73 sec	|6.92e-7 sec |
+------------------------------------------------------------------------------
+|     -O1	|   0.76 sec	|  3.04e-7 sec 	|   0.83 sec 	|3.32e-7 sec |
+------------------------------------------------------------------------------
+|     -O2	|   0.77 sec	|  3.08e-7 sec 	|   0.79 sec 	|3.16e-7 sec |
+------------------------------------------------------------------------------
+|     -O3	|   0.61 sec	|  2.44e-7 sec	|   0.69 sec 	|2.76e-7 sec |
+------------------------------------------------------------------------------
+|   Number of iterations = 2,500,000 	|####################################|
+------------------------------------------------------------------------------
+
+As we've seen before, the higher the compiler optimization level, the faster 
+the execution times and iteration times become. This held true for our
+experiment with float bisection vs Qn bisection root finding. 
+
+The Qn implementation seems to be far superior when compared to the float
+version. With no optimization ( an objective view of the performance ) the 
+difference in times is about a 14% increase in speed when only comparing the
+implementations that use different number formats. 
+

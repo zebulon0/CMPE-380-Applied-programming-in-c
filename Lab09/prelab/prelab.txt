@@ -1,0 +1,56 @@
+--------------
+- prelab.txt -
+--------------
+
+#define SIGN_MASK        (0x80000000) 	// extracts sign bit which is the MSB
+#define SIGN_SHIFT       (31)		// # of bits to right shift the sign bit
+#define EXPONENT_MASK    (0x7f800000)	// 8 bits to the right of the sign bit
+#define EXPONENT_SHIFT   (23)		// # of bits to shift the exp bits right
+#define EXPONENT_BIAS    (127)		// realExponent = masked exp. value - BIAS
+#define SIGNIFICAND_MASK (0x007fffff)   // remaining 23 least significant bits 
+
+FLoating point and Complex Numbers questions:
+
+		-------------------------------------------
+Foating Point =	|  SIGN BIT  |  EXPONENT  |  SIGNIFICAND  |
+		-------------------------------------------
+		|  1  bit    |  8 bits    |  23 bits      | = 32 bits total
+	        -------------------------------------------  
+
+
+Significand (mantissa)?
+MSB is the implied bit... If the MSB = 1, the result is "normalized" 
+The mantissa is the 22 bits to the right of the first bit. A "normalized"
+number is more accurate than a denormalized number.
+
+
+
+Bias?
+Middle of the possible exponent values. Exponent values less than 127 are
+negative (exponent). And exponent values greater than 127 are positive (exponents).
+
+
+Scientific function design: 
+Chaining VS. Performance design using pass by reference or pass by value.
+-------
+Chaining means that the result of one function can be called inside
+and used as a direct parameter for another function. Pass by value can be
+faster than pass by reference. This is because the value is readily available
+for the program to add / compute, while if it is a reference, the program has
+to spend extra time accessing memory for each value that the program needs.
+-------
+The best performance in terms of speed comes from a program that is given a
+pointer to put the result in and values as inputs. This makes the computation
+fast because the values don't have to be read from memory and the result is
+received just as fast because there is no variable that is created or returned.
+This is a tradeoff of course because the function won't return anything which
+means that this program wouldn't be able to be used for chaining. 
+
+
+Why returning pointers to data on the local stack is dangerous. 
+-------
+Dangerous because the result is not guaranteed to stay in memory.
+If the result is pointing to a local variable on the stack, when
+the program is done, the items on the stack could be popped, which means
+that the value in memory is not being tracked by a program. Therefore, 
+the resulting value will not be accurate.

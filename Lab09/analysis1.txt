@@ -1,0 +1,72 @@
+---------------------------------
+-				-
+-	anaysis.txt		-
+-	Zeb Hollinger		-
+-	Lab09			-
+-				-
+---------------------------------
+
+
+/* Write an explanation of the results obtained */
+
+In short, the program we created takes in any 3 numbers. These could be 
+positive or negative. The program assigns the 3 numbers to be the
+coefficients in the quadratic equation for a second degree polynomial.
+Knowing how the quadratic equation works, not all the roots are going to be
+real numbers. Some of the roots will be complex. With this, we displayed both
+roots for each set of inputs in the complex form (real + complex). The
+results from the tests that were done matched those of the results.txt which
+means that our program was working successfully. To add to that, we ran
+valgrind for 3 different tests to verify that we have no memory issues. The 
+results from the valgrind outputs were all successful with no errors!
+
+
+
+/* Did you learn any shortcomings in the C99 
+   implementation of complex numbers? */
+
+I learned that using complex numbers in this implementation
+seems a lot more 'complex' than it could/should be. Within this
+implementation, functions that work with complex numbers have to
+return more than one value, hence the complex number. These functions
+have to return the real number along with the imaginary number. This seems
+like it could be streamlined if it could just return both numbers at the same
+time. I also learned that for some functions, the correct result is not
+guarenteed every time.
+
+
+
+/* Summarize and document the performance observed
+   for each of the optimization levels */
+
+The optimization worked without any issues but there weren't any
+extreme or drastic changes in the timing. In general the higher the 
+optimization level, the faster the program will run. We saw this first
+hand with this program as well as other programs in previous exercises.
+
+
+
+/* Did the optimization work as you would expect? */
+
+The optimization did work as I expected. The results below are all of the
+time averages for the same test with different compiler optimization levels
+used. The generalization still stands strong. The higher the level, we saw
+faster times. 
+
+
+-----------------------------------------------------------------
+./quadTest -a 1 -b 0 -c 1					-
+-----------------------------------------------------------------
+---  Optimization Level: 0  ---					
+Elapsed CPU Time (timer) = 0.090000 sec.
+Elapsed CPU Time per iteration (timer, 1500000) = 6e-08 sec.
+---  Optimization Level: 1  ---
+Elapsed CPU Time (timer) = 0.030000 sec.
+Elapsed CPU Time per iteration (timer, 1500000) = 2e-08 sec.
+---  Optimization Level: 2  ---
+Elapsed CPU Time (timer) = 0.020000 sec.
+Elapsed CPU Time per iteration (timer, 1500000) = 1.33333e-08 sec.
+---  Optimization Level: 3  ---
+Elapsed CPU Time (timer) = 0.020000 sec.
+Elapsed CPU Time per iteration (timer, 1500000) = 1.33333e-08 sec.
+------------------------------------------------------------------

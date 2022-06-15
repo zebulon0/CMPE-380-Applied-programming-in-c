@@ -1,0 +1,16 @@
+8th order correction polynomial
+
+Normal Mode Least Squared using GSL
+
+
+**Heavily use pipes '|'
+
+Model the error and then subtract it from the 
+input data to produce more accurate results
+
+Minimize the "mid-scale" error and balance the percent error
+
+Output from realDevice piped into diffVal will be the data.txt
+Like this??? "./realDevice | diffVal > data.txt"
+
+gcc -g hw11.c DynamicArrays.c -DHW8 -std=c99 -lgsl -lgslcblas -o hw11

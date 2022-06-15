@@ -1,0 +1,90 @@
+/* Basic data fitting concepts */
+
+
+
+/* How does data fitting differ from interpolation */
+INTERPOLATION: 	can't be used on 'noisy' data.
+		finds an equation that touches all data points
+		uses next points to 'adjust' the equation
+
+FITTING:	good for 'noisy' data. finds an equation for any given
+		set of data points. Normally doesn't touch all points.
+
+
+/* Basic data fitting matrix equation */
+Az = b
+
+(AT*A)*z = AT*b, given matrix A, vector b, solve for solution vector z
+
+e = Az - b 
+	z = n coefficients of the 'best fit' equation
+	A*z = best fit 'y' values for the given 'x' data point in A
+	b = actual 'y' values from the data
+	e = approximation error vector (residual)
+	*** the goal is to find a z vector that minimizes e ***
+
+
+/* Why a simple matrix solution can't be used */
+Ax = b does not generally have a unique solution, but the normal equation,
+(AT*A)*z = AT*b always does.
+
+Also squaring the A matrix may introduce unnaceptable errors. Large data + 
+many numbers = errors will happen
+
+
+/* How to format the X data to implement a fitting polynomial of order N */
+X data goes into matrix A...
+
+Say: { (-2,-3) (-2,1) (-1,2) (1,-3) }  **this is for order 1
+
+A = [ [1	-2]
+      [1	-2]
+      [1	-1]
+      [1	 1] ]
+
+AT = [	[1	1	1	1]
+	[-2	-2	-1	1]  ]
+
+**Order 3 example, means largest x value is x^3
+
+Say: { (-2,-3) (-2,1) (-1,2) (1,-3) }
+
+A = [	[1	-2	4	-8] // (-2)^1 	(-2)^2 	(-2)^3
+	[1	-2	4	-8]
+	[1	-1	1	-1]
+	[1	 1	1	 1] ]
+                
+
+
+/* When malloc/free is used and when gsl_matrix_alloc/gsl_matrix_free should be used */
+Malloc() and free() should never be used for GSL objects. GSL doesn't use malloc/free to manage
+memory, but has specific functions instead.
+
+
+VECTORS:	
+	gsl_vector_alloc(size_t nc) - number of columns
+	gsl_vector_free(gsl_vector *c) - pointer to allocated vector
+
+MATRICES:
+	gsl_matrix_alloc(size_t nr, size_t nc) - number of rows and number of columns
+	gsl_matrix_free(gsl_matrix *A) - pointer to allocated matrix
+
+
+
+
+
+
+Matrix A (3 x 3)
+  0:      2.00000      8.00000      6.00000 
+  1:      4.00000      2.00000     -2.00000 
+  2:      3.00000     -1.00000      1.00000 
+Vector b (3 x 1)
+    20.00000 
+    -2.00000 
+    11.00000 
+
+Solution vector x (3 x 1)
+     2.00000 
+    -1.00000 
+     4.00000 
+

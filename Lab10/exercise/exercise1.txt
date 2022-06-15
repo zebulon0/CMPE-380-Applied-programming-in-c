@@ -1,0 +1,98 @@
+---------------------------------
+-				-
+-	in lab exercises	-
+-				-
+---------------------------------
+
+/* Qn Division */
+
+/* Any trouble printing absolute values? */
+At first I used fabs for all of the values that were being printed. I didn't
+realize it until I ran the program that the fixed point values are not floats
+so the abs() function needs to be used instead. 
+-----------------------------------------------------------------------------
+
+
+/* Qn Multiply */
+
+/* Was there any data loss? */
+Yes there was some data loss.
+-----------------------------------------------------------------------------
+
+
+/* Qn Complex Equations */
+No implementation issues, the results from the floating points is close to the
+result that was calculated from Qn multiplication representation of the same
+equation. Only had a small issue where the decimal and fractional equation
+results were close but different because I was originally not representing
+every single digit as a floating point. the equations had a mix of floats
+and decimals.
+-----------------------------------------------------------------------------
+
+/* Qn Performance */
+Qn was faster at addition because it didn't overflow and is simple integer
+addition. Floating point was faster at multiplication because it doesn't have
+to worry about shifting bits when the multiplication is finished.
+-----------------------------------------------------------------------------
+
+
+
+Division test
+fnum       qnum1(dec) qnum2(dec) qnum1(float) qnum2(float)
+-0.031250    -8192     -8192     -0.031250     -0.031250
+-0.015625    -4096     -4096     -0.015625     -0.015625
+-0.007812    -2048     -2048     -0.007812     -0.007812
+-0.003906    -1024     -1024     -0.003906     -0.003906
+-0.001953    -512     -512     -0.001953     -0.001953
+-0.000977    -256     -256     -0.000977     -0.000977
+-0.000488    -128     -128     -0.000488     -0.000488
+-0.000244    -64     -64     -0.000244     -0.000244
+-0.000122    -32     -32     -0.000122     -0.000122
+-0.000061    -16     -16     -0.000061     -0.000061
+-0.000031    -8     -8     -0.000031     -0.000031
+-0.000015    -4     -4     -0.000015     -0.000015
+-0.000008    -2     -2     -0.000008     -0.000008
+-0.000004    -1     -1     -0.000004     -0.000004
+-0.000002    0     0     0.000000     0.000000
+
+
+Division test: Absolute Values
+fnum     qnum1(dec) qnum2(dec) qnum1(float) qnum2(float)
+0.031250  8192     8192     0.031250     0.031250
+0.015625  4096     4096     0.015625     0.015625
+0.007812  2048     2048     0.007812     0.007812
+0.003906  1024     1024     0.003906     0.003906
+0.001953  512     512     0.001953     0.001953
+0.000977  256     256     0.000977     0.000977
+0.000488  128     128     0.000488     0.000488
+0.000244  64     64     0.000244     0.000244
+0.000122  32     32     0.000122     0.000122
+0.000061  16     16     0.000061     0.000061
+0.000031  8     8     0.000031     0.000031
+0.000015  4     4     0.000015     0.000015
+0.000008  2     2     0.000008     0.000008
+0.000004  1     1     0.000004     0.000004
+0.000002  0     0     0.000000     0.000000
+
+
+Multiplication test
+Product = 48.414375 float, qn18 product = 12673152 dec, converted back 48.344238 float
+
+
+Complex calculations test
+Floating point decimal equation: -674.932500:
+Floating point fractional equation: -674.932500
+Floating point Qn equation evaluation: -675.000122
+
+
+Performance test
+Addition
+Clock ticks for float addition: 400000
+Clock ticks for qn addition: 360000
+Faster operation: 'qn addition'
+
+Multiplication
+Clock ticks for float multiplication: 320000
+Clock ticks for qn multiplication: 420000
+Faster operation: 'float multiplication'
+

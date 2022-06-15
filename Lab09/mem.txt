@@ -1,0 +1,62 @@
+Test1: ./quadTest_mem -a 1 -b 0 -c 1
+==14482== Memcheck, a memory error detector
+==14482== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==14482== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==14482== Command: ./quadTest_mem -a 1 -b 0 -c 1
+==14482== 
+
+
+The roots of: 1x**2 + 0x + 1
+  Root1: 0 + 1i
+  Root2: -0 + -1i
+==14482== 
+==14482== HEAP SUMMARY:
+==14482==     in use at exit: 0 bytes in 0 blocks
+==14482==   total heap usage: 1 allocs, 1 frees, 48 bytes allocated
+==14482== 
+==14482== All heap blocks were freed -- no leaks are possible
+==14482== 
+==14482== For lists of detected and suppressed errors, rerun with: -s
+==14482== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+ 
+Test2: ./quadTest_mem -a 2 -b 3 -c 4
+==14500== Memcheck, a memory error detector
+==14500== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==14500== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==14500== Command: ./quadTest_mem -a 2 -b 3 -c 4
+==14500== 
+
+
+The roots of: 2x**2 + 3x + 4
+  Root1: -3 + 1.19896i
+  Root2: -3 + -1.19896i
+==14500== 
+==14500== HEAP SUMMARY:
+==14500==     in use at exit: 0 bytes in 0 blocks
+==14500==   total heap usage: 1 allocs, 1 frees, 48 bytes allocated
+==14500== 
+==14500== All heap blocks were freed -- no leaks are possible
+==14500== 
+==14500== For lists of detected and suppressed errors, rerun with: -s
+==14500== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+ 
+Test3: ./quadTest_mem -a 3 -b 4 -c 5
+==14504== Memcheck, a memory error detector
+==14504== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==14504== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==14504== Command: ./quadTest_mem -a 3 -b 4 -c 5
+==14504== 
+
+
+The roots of: 3x**2 + 4x + 5
+  Root1: -4 + 1.10554i
+  Root2: -4 + -1.10554i
+==14504== 
+==14504== HEAP SUMMARY:
+==14504==     in use at exit: 0 bytes in 0 blocks
+==14504==   total heap usage: 1 allocs, 1 frees, 48 bytes allocated
+==14504== 
+==14504== All heap blocks were freed -- no leaks are possible
+==14504== 
+==14504== For lists of detected and suppressed errors, rerun with: -s
+==14504== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
