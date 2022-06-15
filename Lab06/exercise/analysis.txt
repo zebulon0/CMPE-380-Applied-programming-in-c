@@ -1,0 +1,8 @@
+/* Explain what the "#if TEST==1" macro does */
+The TEST macro is part of the conditional compilation feature of
+macros. Essentially the CPP looks for the compile flag -DTEST=1
+which defines a simple macro from the command line. Thus creating a macro
+called "TEST" and setting it to '1'. Then the CPP sees that TEST==1 so
+it executes the conditional code under the line "#if TEST==1".
+
+

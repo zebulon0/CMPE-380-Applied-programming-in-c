@@ -1,0 +1,45 @@
+# Simple demonstration make file
+SOURCE = fib.c
+PROG = fib
+
+# Compiler and Directives
+CC = gcc
+CFLAGS = -O1 -g -Wall -std=c99 -pedantic
+VALGRIND = valgrind --tool=memcheck --leak-check=yes --track-origins=yes
+
+# Build a list of OBJ files from the source
+OBJS = $(patsubst %.c, %.o, $(SOURCE))
+
+# Don't print out each executed line
+.SILENT:
+
+# Compiles everything
+all: $(PROG)
+
+# Convert each .c file to a .o file
+.c.o: 	
+	echo "compile $<"
+	$(CC) $(CFLAGS) -c $<
+
+# Rebuild the solution if any .o file
+$(PROG): $(OBJS)
+	echo "linking $(PROG)"
+	$(CC) $(CFLAGS) $(OBJS) -o $(PROG)
+
+# List all the key make targets
+.PHONY: help
+help:
+	echo "make options: all, clean, mem, help"
+
+# Cleans the application up, removes executables,
+# object files, plots, temp files, etc.
+.PHONY: clean
+clean:
+	-rm -f $(PROG)
+	-rm -f *.o
+
+# Generates a Valgrind memory report
+.PHONY: mem
+mem: $(PROG) $(SOURCE)
+	echo "runnning valgrind"
+	$(VALGRIND) ./$(PROG)

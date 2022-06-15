@@ -1,0 +1,70 @@
+---------------------------------
+-				-
+-	Lab 05: Makefiles	-
+-				-
+---------------------------------
+
+
+-------------
+- MakeFile2 -
+-------------
+This was the first of the two Makefiles that were created for the in lab
+exercises. Makefile consisted of mostly less complicated hard coded rules
+so the make functionality was a little easier to understand. The rule
+execution makes more sense when reading instructions that don't use too many
+abstract macros. Leave that for later... This Makefile was pretty simple to
+implement due to the length of the instructions and commented code that we 
+had to follow along with. To add to that, the lecture notes were very useful
+for understanding what all the special macro variables do and mean when used
+in the commands. This introduced the handful of macro variables and showed
+when and why they might be useful to use instead of hard coded values. We
+were also shown the the couple ways a makefile can be used to compile and
+link the .c files to .o files. This was certainly the most confusing part
+for me to understand, but I am slowly coming around to it the more I work
+with it and read it. 
+
+
+
+-------------
+- MakeFile3 -
+-------------
+This is the second and final makefile for the in lab portion of the lab
+exercises. The basis of this Makefile was to copy the previous makefile
+and keep the functionality the same as before with the bin1 and bin2
+commands, but using macros for everything possible. Macros are a
+programmer's best friend, because as we learned when code is changed,
+if it is called as a macro in the makefile, then in some cases the makefile
+won't have to be changed at all. Converting the Makefile2 to use macros was
+definitely challenging, but it helped me to learn how the make and 
+makefile is supposed to be structured and designed. 
+
+
+
+--------------
+- Assignment -
+--------------
+With that being said, learning macros and makefile structure happened at the
+right time because we had to create a makefile to handle most of the
+functionality of the assignment. The assignment's task was to implement a 
+word search for both the dynamic arrays code, and the linked list code that
+we had completed during previous lab assignments. The search functions
+essentially were fed a word and was tasked with searching over the data 
+structure and returning a 1 or a 0, or a word or a NULL if the word was
+found / not found during the search. Iterating over each data structure
+was very similar in the fact that in both cases, an iterative loop was
+used to iterate over each element in the set and compare its stored string
+with the string that contains the word that is being searched for. The
+other part of the assignment was making all the compiling, linking, testing,
+and memory checking function from a makefile. This was the hardest part
+because as I learned earlier, make is a rule based language, so it is very
+different to program when compared to what we do in C. This was a challenge
+nonetheless and I referenced the notes and the last Makefile3 that used a 
+bunch of macros to help me with this makefile that needed to use as many
+macros as possible to help with streamlining and use for the future labs.
+This was tricky to implement and did take me some time, but after I was
+able to get all of my make commands working and testing with one of the 
+smaller word text files I was successful in completing this lab and 
+assignment. When I ran the "make mem" commmand on the engWords.txt like
+the instructions said, I was getting consistent times of around 5 minutes
+17 seconds for the valgrind output to show up in the terminal. This execution
+time was under the specified 6 minute goal so I officially finished the lab!

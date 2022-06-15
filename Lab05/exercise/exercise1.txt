@@ -1,0 +1,237 @@
+make: *** No rule to make target `target2', needed by `target1'.  Stop.
+make: *** No rule to make target `target2'.  Stop.
+
+This output makes sense. There was an error when the 'target1' rule went
+to look for a 'target2' object definition and didn't find one. Essentially
+it was looking to see if there was a macro "rule" defined to initialize a
+target2 component so then it errored out.
+
+
+
+/* touch all files and run bin1 target */
+Dependency change for bin1 is 'a.c b.c c.c'
+gcc a.c b.c c.c -o bin1
+
+/* run bin1 without touching any of the files */
+make: `bin1' is up to date.
+
+
+/* touch b.c and c.c and run bin1 */
+Dependency change for bin1 is 'b.c c.c'
+gcc a.c b.c c.c -o bin1
+
+The macro '$?' returns the names of all dependencies that have a time/date
+stamp that is newer than what Make has. Therefore at the first run, all
+three files were echo'd out. Then none because the command was ran twice
+in a row. Finally after touching two of the files and running the same
+command, the two files that we touched were printed out in the echo
+statement becuase their time/date stamps were newer than what Make had on
+record.
+
+
+/* Add bin2 to makefile and run it */
+gcc -O1 -g -Wall -std=c99 -pedantic   -c -o a.o a.c
+gcc -O1 -g -Wall -std=c99 -pedantic   -c -o b.o b.c
+gcc -O1 -g -Wall -std=c99 -pedantic   -c -o c.o c.c
+Linking 'a.o b.o c.o' to 'bin2'
+The first dependency of 'a.o b.o c.o' is 'a.o'
+gcc a.o b.o c.o -o bin2
+
+
+The .o files have been generated at the beginning of the bin2 target
+execution. The compilation had to happen before the .o files could
+be used for the bin2 rule.
+
+
+/* Touch b.c and run bin2 again */
+gcc -O1 -g -Wall -std=c99 -pedantic   -c -o b.o b.c
+Linking 'a.o b.o c.o' to 'bin2'
+The first dependency of 'a.o b.o c.o' is 'a.o'
+gcc a.o b.o c.o -o bin2
+
+The rule noticed that b.c has a different time stamp so it recompiled
+the b.c file into a fresh b.o file before running bin2 commands.
+
+
+/* Cleaning and then adding .c.o rule */
+Compiling 'a'
+Compiling 'b'
+Compiling 'c'
+Linking 'a.o b.o c.o' to 'bin2'
+The first dependency of 'a.o b.o c.o' is 'a.o'
+gcc a.o b.o c.o -o bin2
+gcc: error: a.o: No such file or directory
+gcc: error: b.o: No such file or directory
+gcc: error: c.o: No such file or directory
+gcc: fatal error: no input files
+compilation terminated.
+make: *** [bin2] Error 4
+
+The c code hasn't been compiled because the timedate stamps haven't changed
+since make was last ran. Even tough there aren't any .o files to reflect
+the up to date .c files, they won't be generated until the .c file
+time date stamps change. This explains why the bin2 command failed because
+the target's components are nonexistent which means that the rule can't
+execute.
+
+
+/* Add compile line to .c.o rule */
+Compiling 'a'
+gcc a.c -c
+Compiling 'b'
+gcc b.c -c
+Compiling 'c'
+gcc c.c -c
+Linking 'a.o b.o c.o' to 'bin2'
+The first dependency of 'a.o b.o c.o' is 'a.o'
+gcc a.o b.o c.o -o bin2
+
+The .c files and .o files were created this time because we added a rule
+to compile the .c files into .o files, so the bin2 command was able to 
+execute because there is a rule to create the .o files from the given
+.c files.
+
+/* Comment out the .c.o and replace with %.o : %.c */
+/* clean */
+rm -f *.o bin1 bin2
+
+
+/* bin2 */
+Dependency change is 'a'
+gcc a.c -c
+Dependency change is 'b'
+gcc b.c -c
+Dependency change is 'c'
+gcc c.c -c
+Linking 'a.o b.o c.o' to 'bin2'
+The first dependency of 'a.o b.o c.o' is 'a.o'
+gcc a.o b.o c.o -o bin2
+
+
+/*touch b and run bin2 */
+Dependency change is 'b'
+gcc b.c -c
+Linking 'a.o b.o c.o' to 'bin2'
+The first dependency of 'a.o b.o c.o' is 'a.o'
+gcc a.o b.o c.o -o bin2
+
+
+All 3 files were compiled following the clean rule execution because 
+there were no .o files for which prevented the bin2 rule from executing
+when it was first called. After touching b.c, only the b.c file was compiled.
+These rules were executed as I expected. $* printed the prefix shared by the
+target and dependent files, hence 'b'. $^ printed the names of the component
+files in the bin2 rule. The $< printed the first name of the first dependency
+in the bin2 rule.
+
+
+/* Commenting out the %.o : %.c rule */
+/* adding new rule specific to the .c and .o files */
+
+/* running clean */
+rm -f *.o bin1 bin2
+
+
+/* runnning bin2 */
+Compiling 'a.c'
+gcc a.c -c
+Compiling 'b.c'
+gcc b.c -c
+Compiling 'c.c'
+gcc c.c -c
+Linking 'a.o b.o c.o' to 'bin2'
+The first dependency of 'a.o b.o c.o' is 'a.o'
+gcc a.o b.o c.o -o bin2
+
+All 3 files were compiled which is exactly what was expected since the 
+clean rule was executed which deleted the bin2 and all .o files.
+
+/* touch b.c and run again */
+Compiling 'a.c'
+gcc a.c -c
+Compiling 'b.c'
+gcc b.c -c
+Compiling 'c.c'
+gcc c.c -c
+Linking 'a.o b.o c.o' to 'bin2'
+The first dependency of 'a.o b.o c.o' is 'a.o'
+gcc a.o b.o c.o -o bin2
+
+All 3 files were compiled even though the only time date stamp that was
+changed was the b.c file. Although at first, it seems odd, the target of
+the new rule we added is for all .o files. Since one of the 3 dependencies
+was changed then all of the targets are reproduced since a dependency has
+been changed.
+
+
+
+/* USING MACRO VARIABLES */
+/* Make necessarcy changes to the Makefile3 file copied from Makefile2 */
+
+
+/* Run clean */
+rm -f *.o bin1 bin2
+
+/* run bin2 */
+Dependency change is 'a'
+gcc a.c -c
+Dependency change is 'b'
+gcc b.c -c
+Dependency change is 'c'
+gcc c.c -c
+Linking 'a.o b.o c.o' to 'bin2'
+The first dependency of 'a.o b.o c.o' is 'a.o'
+gcc a.o b.o c.o -o bin2
+
+/* run bin2 again */
+make: `bin2' is up to date.
+
+Expected the first bin execution to compile and link all of the .c files
+with the .o files because there were no existing .o files in the directory.
+The second run worked as expected because nothing happened because the time
+date stamps for the .c files haven't changed so bin2 is 'up to date'.
+
+
+/* Touch b.c and run bin2 */
+Dependency change is 'b'
+gcc b.c -c
+Linking 'a.o b.o c.o' to 'bin2'
+The first dependency of 'a.o b.o c.o' is 'a.o'
+gcc a.o b.o c.o -o bin2
+
+Only the b.c file was compiled because its time date stamp was out of date.
+This was expected to happen after running 'touch' on b.c.
+
+/* Add support for Valgrind */
+
+/* run clean */
+rm -f *.o bin1 bin2
+
+/* run mem */
+rm -f *.o bin1 bin2
+Dependency change for bin1 is 'a.c b.c c.c'
+Dependency change is 'a'
+gcc a.c -c
+Dependency change is 'b'
+gcc b.c -c
+Dependency change is 'c'
+gcc c.c -c
+Linking 'a.o b.o c.o' to 'bin2'
+The first dependency of 'a.o b.o c.o' is 'a.o'
+gcc a.o b.o c.o -o bin2
+Running valgrind
+valgrind --tool=memcheck --leak-check=yes --track-origins=yes ./bin1
+==14640== Memcheck, a memory error detector
+==14640== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==14640== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==14640== Command: ./bin1
+==14640== 
+==14640== 
+==14640== HEAP SUMMARY:
+==14640==     in use at exit: 0 bytes in 0 blocks
+==14640==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==14640== 
+==14640== All heap blocks were freed -- no leaks are possible
+==14640== 
+==14640== For lists of detected and suppressed errors, rerun with: -s
+==14640== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

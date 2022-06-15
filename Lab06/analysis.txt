@@ -1,0 +1,181 @@
+----------------------------
+-			   -
+- Lab 6 Macros & 2D Arrays -
+-			   -
+----------------------------
+
+This assignment was very challenging because the code base of the material
+that we were working with was very large. Each file had its own purpose which
+made it even more difficult to understand what the tasks were and what needed
+to be changed for each file. After reading and re reading the assignment
+instructions, I was able to gain more of a sense of direction for what 
+needed to be done. In summary, we needed to add macros and implement them
+into C and C++ files. These files will then need to be compiled, tested, etc
+with a Makefile. This means that the files need to be manipulated with the 
+rules and commands that I define to be able to do what they are specified to
+do. In this case, the all command was supposed to compile all of the
+necessary source files into respective object files. For this, I used 4
+source files to make the tests easier, and then had them compile into a
+total of 6 object files for each test case that needed to be ran. 
+
+My 3 test runs are listed below...
+
+
+
+
+
+
+-------------- hw6c_1 X1, no move fopen
+Elapsed CPU Time (DataTimer) = 1.690000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0169 sec.
+Elapsed CPU Time (CalcTimer) = 0.140000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 7e-06 sec.
+move fopen to top disabled 
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+-------------- hw6c_2 X2, no move fopen
+Elapsed CPU Time (DataTimer) = 3.420000 sec.
+Elapsed CPU Time per iteration (DataTimer, 200) = 0.0171 sec.
+Elapsed CPU Time (CalcTimer) = 0.270000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 40000) = 6.75e-06 sec.
+move fopen to top disabled 
+1000000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+-------------- hw6c_f1 X1, yes move fopen
+Elapsed CPU Time (DataTimer) = 0.010000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0001 sec.
+Elapsed CPU Time (CalcTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 0 sec.
+move fopen to top enabled 
+5000 data lines processed, the least square line is : Y = -nan * X + -nan
+ 
+-------------- hw6c_f2 X1, yes move fopen
+Elapsed CPU Time (DataTimer) = 0.010000 sec.
+Elapsed CPU Time per iteration (DataTimer, 200) = 5e-05 sec.
+Elapsed CPU Time (CalcTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 40000) = 0 sec.
+move fopen to top enabled 
+5000 data lines processed, the least square line is : Y = -nan * X + -nan
+ 
+-------------- hw6cpp_1 X1
+Elapsed CPU Time (DataTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0 sec.
+Elapsed CPU Time (CalcTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 0 sec.
+5100 data lines processed, the best least squares line is: Y = -nan * X + -nan
+ 
+-------------- hw6cpp_2 X1
+Elapsed CPU Time (DataTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (DataTimer, 200) = 0 sec.
+Elapsed CPU Time (CalcTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 40000) = 0 sec.
+5200 data lines processed, the best least squares line is: Y = -nan * X + -nan
+ 
+-------------- hw6c_1 X1, no move fopen
+Elapsed CPU Time (DataTimer) = 1.710000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0171 sec.
+Elapsed CPU Time (CalcTimer) = 0.140000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 7e-06 sec.
+move fopen to top disabled 
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+-------------- hw6c_2 X2, no move fopen
+Elapsed CPU Time (DataTimer) = 3.420000 sec.
+Elapsed CPU Time per iteration (DataTimer, 200) = 0.0171 sec.
+Elapsed CPU Time (CalcTimer) = 0.270000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 40000) = 6.75e-06 sec.
+move fopen to top disabled 
+1000000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+-------------- hw6c_f1 X1, yes move fopen
+Elapsed CPU Time (DataTimer) = 0.010000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0001 sec.
+Elapsed CPU Time (CalcTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 0 sec.
+move fopen to top enabled 
+5000 data lines processed, the least square line is : Y = -nan * X + -nan
+ 
+-------------- hw6c_f2 X1, yes move fopen
+Elapsed CPU Time (DataTimer) = 0.010000 sec.
+Elapsed CPU Time per iteration (DataTimer, 200) = 5e-05 sec.
+Elapsed CPU Time (CalcTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 40000) = 0 sec.
+move fopen to top enabled 
+5000 data lines processed, the least square line is : Y = -nan * X + -nan
+ 
+-------------- hw6cpp_1 X1
+Elapsed CPU Time (DataTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0 sec.
+Elapsed CPU Time (CalcTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 0 sec.
+5100 data lines processed, the best least squares line is: Y = -nan * X + -nan
+ 
+-------------- hw6cpp_2 X1
+Elapsed CPU Time (DataTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (DataTimer, 200) = 0 sec.
+Elapsed CPU Time (CalcTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 40000) = 0 sec.
+5200 data lines processed, the best least squares line is: Y = -nan * X + -nan
+ 
+-------------- hw6c_1 X1, no move fopen
+Elapsed CPU Time (DataTimer) = 1.690000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0169 sec.
+Elapsed CPU Time (CalcTimer) = 0.140000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 7e-06 sec.
+move fopen to top disabled 
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+-------------- hw6c_2 X2, no move fopen
+Elapsed CPU Time (DataTimer) = 3.400000 sec.
+Elapsed CPU Time per iteration (DataTimer, 200) = 0.017 sec.
+Elapsed CPU Time (CalcTimer) = 0.270000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 40000) = 6.75e-06 sec.
+move fopen to top disabled 
+1000000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+-------------- hw6c_f1 X1, yes move fopen
+Elapsed CPU Time (DataTimer) = 0.010000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0001 sec.
+Elapsed CPU Time (CalcTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 0 sec.
+move fopen to top enabled 
+5000 data lines processed, the least square line is : Y = -nan * X + -nan
+ 
+-------------- hw6c_f2 X1, yes move fopen
+Elapsed CPU Time (DataTimer) = 0.010000 sec.
+Elapsed CPU Time per iteration (DataTimer, 200) = 5e-05 sec.
+Elapsed CPU Time (CalcTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 40000) = 0 sec.
+move fopen to top enabled 
+5000 data lines processed, the least square line is : Y = -nan * X + -nan
+ 
+-------------- hw6cpp_1 X1
+Elapsed CPU Time (DataTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0 sec.
+Elapsed CPU Time (CalcTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 0 sec.
+5100 data lines processed, the best least squares line is: Y = -nan * X + -nan
+ 
+-------------- hw6cpp_2 X1
+Elapsed CPU Time (DataTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (DataTimer, 200) = 0 sec.
+Elapsed CPU Time (CalcTimer) = 0.000000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 40000) = 0 sec.
+5200 data lines processed, the best least squares line is: Y = -nan * X + -nan
+
+
+
+As it can be seen, I was having issues with my C++ timing tests and was 
+not able to figure out why I was getting zero and nan as results. When 
+comparing this to the matrix.txt I could clearly see the difference. 
+Even after altering the number of repeats, I was still not able to get a
+number to be produced for my timers. 
+
+
+Aside from that small issue, it was pretty clear to see which test case
+has faster times. The tests with the move fopen macro defined had 
+significanly faster times than the same tests with the macro not
+defined. This makes sense because we were moving the file IO to outside
+of the loop that is being timed. This means that while the total execution
+time is relatively similar, the portion of code that was being timed became
+faster because the file IO did not occur in that timed portion of code.
