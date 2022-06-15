@@ -1,0 +1,44 @@
+-----------------------------------------
+-					-
+-	Lab 3: Valgrind, getopt		-
+-	& getopt_long			-
+-					-
+-----------------------------------------
+
+
+This lab was certainly tricky to understand for certain parts. Most of
+them having to do with understanding how the getopt and getopt_long
+functions work. The start of the lab was fun to learn about valgrind because
+it is a very helpful tool to use for these programs. It helps to show a deep
+analysis of the memory allocation, reallocation, and deallocation that is 
+done within the C program. This was then used later during the assignment
+which helped to verify that the DynamicArrayc.c was implemented correctly
+and is free of any memory leaks or errors. 
+
+The next part had to do with debugging which is also another helpful tool
+to have in any programmers tool belt. It helps to visualize what variable
+values are what when the program is executing. This was pretty simple to 
+complete and I didn't have any issues.
+
+The assignment relied on the last part of the in lab exercises which had
+to do with the functions getopt and getopt_long. These functions are 
+useful for command line parsing when a file has multiple flags and
+parameters that it is specifically looking for. In this case we had to
+look for long and short file parameters. Those being a help flag, words
+to print, and the file to read from. That part was a little difficult
+to understand at first but with a reference of lab_e.c, I used that to
+my advantage when crafting the parameters for the assignment. The only
+real issue that I ran into with the assignment was understanding that
+the inFile pointer does not need to be memory managed because it is
+assigned a memory address to a place on the stack which is memory
+that is already managed by the computer. I had added the correct memory
+items but when I learned that they aren't necessary, I deleted them but
+left in code freeing the pointer memory which caused my error with the
+valgrind output. This was easily fixed by deleting that line of code,
+which left me with no memory leaks for my TestDarray.c program. 
+
+
+Overall, this lab was not easy, but it was not exremely hard either. I
+would say that this was a great lab to learn new functionality and functions
+that revolve around C programming and the C language. 
+

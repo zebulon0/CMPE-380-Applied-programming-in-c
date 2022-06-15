@@ -1,0 +1,58 @@
+Zeb Hollinger ( zah1276@rit.edu ) 
+
+---------------------------------------------
+---                                       ---
+---          Interactive Exercises        ---
+---					  ---
+---------------------------------------------
+
+-------------
+- Example 1 -
+-------------
+word 1
+word 2
+word 3
+
+As seen above, the output without running valgrind seems to execute without
+any issues. After running valgrind, there was a huge memory leak for the
+program. The heap had 3 memory allocations, of size 47 bytes. At the time of
+exit, there were 35 bytes and 2 blocks that were "definitely" lost. 
+
+After fixing the issues, there were 3 blocks allocated and 3 blocks freed.
+The total sixe in bytes of memory used was 47. Zero blocks and bytes
+were lost after fixing the code. No valgrind errors!! :)
+
+
+-------------
+- Example 2 -
+-------------
+
+Last two random numbers are 86 94
+
+Seen above is the original program output, there are no apparent errors.
+
+After running valgrind, there was 1 block and 400 bytes of memory allocated
+and it was all lost at the time of program exit. There is also an error 
+where line 17 has an invalid write size of 4. The address is zero bytes
+after the 400 bytes that were previously allocated.
+
+To fix the memory issue, I freed the array of ints that was used in the
+program. This resulted in losing zero of the 1 block and 400 bytes
+of memory that was originally allocated. The other invalid write size
+issue was fixed by changing the array writing for loop to end at 99
+instead of 100. The issue was that the for loop was trying to write from
+the indexes 1-100. This is wrong because when an array is allocated in
+memory, it allocates it for indexes 0-99 instead of 1-100. So it was
+trying to write to a space in memory that wasn't allocated. Quick fix
+was done by changing the i values to go from 0 to 99. 
+
+
+-------------
+- Example 3 -
+-------------
+
+-------------
+- Example 4 -
+-------------
+
+

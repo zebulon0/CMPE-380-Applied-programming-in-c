@@ -1,0 +1,51 @@
+Hello World
+commit d812268f6bbeefb76cebc5d6a30cb54b18361192
+Author: zah1276 <zah1276@rit.edu>
+Date:   Tue Jan 26 21:00:53 2021 -0500
+
+    added major to test.c
+
+commit e8c21b5fb717a5263bbb4868b6b46816e0be692c
+Author: zah1276 <zah1276@rit.edu>
+Date:   Tue Jan 26 20:59:25 2021 -0500
+
+    Committng test c file
+
+
+Due to the fact that this was the first lab of the semester, it wasn't too
+technical or data oriented. The goal of the assignment was to fortify some of
+the new unix commands and skills that we learned during the in lab exercise.
+In certain ways, it was very similar to the in lab exercises. This assignment
+entailed, moving around on a remote machine using ssh and unix commands,
+manipulating files, creating and extracting tarball, running programs on the
+remote machine, and using git.
+
+
+Having some basic unix skills due to my previous co-op, I didn't have too much
+trouble when I was tasked to use VI, move files around, and using ls to view
+directory contents. Part A included creating a directory and creating a txt 
+file. That text file was edited using VI and I added the required details into
+the file. This was pretty straightforward and didn't cause any issues to 
+complete. Part B involved using matlab from the remote machine. This is 
+something I had never done before, but with the steps given, it wasn't hard to
+do and was very interesting to learn for use in the future. Part C applied 
+file I/O which I didn't have previous experience with, but after the in lab 
+exercise this was pretty fun to do and is a very cool feature of the unix 
+commands. It also involved editing a file and creating a copy of that file to
+a new text file. The final part, part D was similar to the in lab exercise,
+this applied the git version control to the hw01 directory that was created in
+part A. Git is something that I am familiar with using. The workflow of 
+commits, deletion, and file recovery is something that I have done before. 
+This application of git is not how I have used it before. I mostly used git 
+with an IDE and it has a GUI for all of the git commands. Using git commands 
+in a terminal is good to learn because after it is learned, it can become more
+consistent to use instead of relying on a GUI to do everything.
+
+
+Overall, this was a great first lab to learn how to navigate around a remote
+machine using unix commands in the ssh terminal. This applied some of the unix
+commands and skills I had learned previously, as well as giving me a new 
+perspective on how to use git in the terminal instead of a GUI. I was able to
+commit with a message, see the change log, and recover files with git in the 
+terminal. This was a good start to editing C files and making changes using
+unix provided features.

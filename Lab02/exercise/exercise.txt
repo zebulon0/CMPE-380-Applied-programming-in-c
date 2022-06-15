@@ -1,0 +1,142 @@
+Start of Interactive exercise: seeing sizes of data types on the system
+
+short int              value: 1,  Size: 2 bytes
+unsigned short int     value: 2,  Size: 2 bytes
+unsigned int           value: 3,  Size: 4 bytes
+int                    value: 4,  Size: 4 bytes
+long int               value: 5,  Size: 8 bytes
+unsigned long int      value: 6,  Size: 8 bytes
+long long int          value: 7,  Size: 8 bytes
+unsigned long long int value: 8,  Size: 8 bytes
+signed char            value: 8,  Size: 1 bytes
+unsigned char          value: 9,  Size: 1 bytes
+float                  value: 11.000000,  Size: 4 bytes
+double                 value: 12.000000,  Size: 8 bytes
+long double            value: 13.000000,  Size: 16 bytes
+Different data '123.456789'  '123.457'  ' 123.4568'
+
+
+Step 1: Make a union of a float and integer.
+        Assign the float = 6.0 and the int = 5
+	Print out the results.
+
+Results below..
+
+aNumber1.a = 6.000000
+aNumber1.b = 5
+
+I see the values exactly as I assigned them. This is because I assigned a value to the float, then printed it.
+I did the same for the int to prevent printing out garbage numbers for the variable that doesn't get
+assigned. If I were to assign one value and print both, then I would see a grabage value for the unassigned variable.
+
+Example output of garbage numbers are below. 
+
+aNumber1.a = 6.000000
+aNumber1.b = 1086324736
+aNumber1.a = 0.000000
+aNumber1.b = 5
+
+Variable 'a' was assigned '6.0' and then both variables were printed. And then variable 'b'
+was assigned '5' and both variables were printed.
+
+Step 2: Do the same thing but with a struct
+
+aNumber2.a = 6.000000
+aNumber2.b = 0
+aNumber2.a = 6.000000
+aNumber2.b = 5
+
+These values are just about what I expected because comparing this to a union, a struct doesn't
+store different data types in the same memory location. Hence the garbage values for the previous
+variable outputs. Compare that to the current outputs and you see that if the variable
+was unassigned its' value is just 0.
+
+Step 3: Comparing the data structures using sizeof operator
+
+aNumber1.a = 6.000000
+aNumber1.b = 1086324736
+sizeof union = 4
+
+aNumber1.a = 0.000000
+aNumber1.b = 5
+sizeof union = 4
+
+aNumber2.a = 6.000000
+aNumber2.b = 0
+sizeof struct = 8
+
+aNumber2.a = 6.000000
+aNumber2.b = 5
+sizeof struct = 8
+
+The sizeof operator returns the amount of memory allocated to the given data type.
+In this case, we have a union and a struct, both containing the same variables and types.
+The union takes up half the memory than the struct does and that makes sense because the
+union stores different data types at the same memory addresses. Thus requiring less
+memory for those variables. The tradeoff for that is having garbage values assigned to
+a variable that is not in use. Because of this, the struct is 2x larger.
+
+
+Step 4: using a typedef and for loop to print out Beatle band members
+
+John Lennon born 1940
+Paul McCartney born 1942
+George Harrison born 1943
+Ringo Starr born 1940
+
+Done.
+
+
+Step 5: Create a run on string of first names using data structures from before
+
+Run on string of first names: JohnPaulGeorgeRingo
+
+I used the same for loop setup as before, and used strncat with a max character size
+of 6 which is the longest first name in the beatles array.
+
+
+Step 6: write code to return the index number for Ringo in the beatles array
+
+The Ringo index is 3
+
+Done.
+
+-----------------------------------
+-         MEMORY MANAGEMENT       -
+-----------------------------------
+
+Step 1: malloc 12 bytes of memory for text_p with proper return code checking
+
+memory allocation was successful.
+
+Output from the return code checking of the malloc for text_p
+
+
+Step 2&3 : strncpy() the given string, justify your choice of "n"
+
+'CMPE380 lab '
+
+The string text_p has 12bytes (characters) and "CMPE380 lab " also
+takes up the full 12 characters in the string
+
+Step 4: use realloc() to resize text_p to 20 bytes with proper error checking
+
+memory resize to 20 bytes was successful.
+
+
+Step 5&6: Use strncat() to add "--Realloc" to "text_p"
+	Justify choice of "n" (should include strlen())
+
+memory allocation was successful.
+'CMPE380 lab '
+memory resize to 20 bytes was successful.
+'CMPE380 lab -- Reall'
+
+"n" was chosen by doing 20-strlen(text_p) 
+And 8 characters were appended to the string from the
+given string. So yes, the string was printed properly.
+
+Step 7: Free the memory block
+
+'CMPE380 lab -- Reall'
+Freed memory. text_p = '(null)'

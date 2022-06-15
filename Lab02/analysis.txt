@@ -1,0 +1,46 @@
+The first lab taught us how to use common unix commands and how to 
+work in a terminal using vi, etc, on a remote machine. Those are the
+basics upon what this lab builds on. To begin, the prelab and in-lab 
+exercise portion of this lab was comprised of learning about the data
+types and data structures that are used in C. That knowledge was then
+directly applied by learning and using the function printf() to format
+a string output to be printed with multiple data types. Those were not
+too hard to learn and implement since they are often used in other
+programming languages. The tricky parts of string manipulation was
+understanding how strncat(), strncmp() strncpy() works and how to apply
+them to the in lab exercise by filling the band data array with the given
+beatles members. This seemed difficult because we were tasked with using
+strncpy to add the names to the band struct. This can easily be done
+while the struct is initialized, but instead I had to access each 
+band member in the array and assign their values one at a time.
+
+Other than that small issue, we also learned about memory management
+and how to allocate, realocate, and free memory. This is a new concept
+to me, so I was sure to pay attention and remember to check after working
+with memory to see if it was successful or not. This check needed to be 
+done in the assignment potion.
+
+Lastly, we were taught how to use the program debugger. This involved
+working with breakpoints, stepping over lines, and evaluating variable
+values when the program is stopped on a certain line. This concept wasn't
+used too much for the exercise and assignment, but a debugger is a dev's
+best friend. Without it, how can you tell if your code really works how
+you are expecting it to.
+
+To finish off this lab was the assignment. This involved implementing a 
+data driven dynamic array with a n abstract "data" type that can be
+changed in the future as needed. The functions that we had to implement
+are what make this array *dynamic*. That being, handling memory based on
+adding entries to the array, initializing the array, and deleting the
+array. Implementing this did seem daunting at first, but after taking
+the assignment step by step and referencing the memory allocation
+functions. The pseudo code was starting to make sense. I outlined the
+form of the code based on the pseudo code and then consulted the internet
+figure out how to access the attributes of the dynamic array like the
+capacity and entries used when we are only given the pointer. 
+
+In summary, breaking the assignment down into small steps to implement
+was extremely helpful and made it easier to finish the lab. I was able
+to accomplish the smaller tasks like checking if the capacity equals the
+entries used. That then lead to error checking for memory allocation and
+printing out an error message and exiting with the correct error code.

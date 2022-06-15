@@ -1,0 +1,5 @@
+#############################################################################
+# Simple script to compile and link code
+#############################################################################
+gcc -O1 -g -Wall -std=c99 -pedantic simpleTest.c DynamicArrays.c -o simpleTest
+gcc -O0 -g -Wall -std=c99 simpleTest.c -o simpleTest
