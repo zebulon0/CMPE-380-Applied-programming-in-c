@@ -1,0 +1,58 @@
+---------------------------------
+-				-
+-	Lab 4: Pointers		-
+-				-
+---------------------------------
+
+
+----------
+- Prelab -
+----------
+No prelab!
+
+
+----------
+- In lab -
+----------
+The in lab portion of the exercise focused on all aspects of pointers. 
+This included passing pointers by reference, by value, and even using
+function pointers instead of calling a function. For me, pointers seem
+very ambiguous in their nature, so some of the exercises were tricky for
+me to understand. The main focus is around memory allocation and freeing
+memory that has served it's purpose. The linked lists part was also tough 
+at first to complete becuase I didn't reall see the purpose of the Wrapper
+structure for the Linked List. I also thought that I needed to allocate 
+memory for each of the node pointers that the wrapper class contains which
+caused me a lot of memory leaks and issues when I ran valgrind on it. 
+Overall, this in lab helped me understand pointers slightly better than I
+have previously. Also the last part of the in lab was a great jump start
+into the assignment which helped a lot because it was structured similarly.
+
+
+--------------
+- Assignment -
+--------------
+The differences between the assignment's linked list and the lab_c.c 
+linked list is that there is no index value kept by the node and the linked
+list used in the assignment is doubly linked. That means that each node
+points to the node in front of it, as well as the node behind it. 
+This wasn't too difficult to understand because I have used linked lists
+and doubly linked lists before, but when implementing the add and remove
+functions, it increases the complication because you have to worry about 3
+nodes and where they're pointing instead of only 2. Like mentioned previously
+the Init and Destroy functions were pretty easy to implement, but as is with
+the DLL the add and remove functions are tricky. I was able to slowly work
+through the implementation of each of them, but I had made one small mistake
+that kept giving me segmentation faults and memory errors with invalid reads.
+That being that I overlooked the fact that I need to allocate memory for the
+string that the remove function is returning. If I try to set a pointer to
+the Node's string and then free the node, I am essentially trying to read
+the string from memory that has been freed. This along with forgetting to
+use strncpy caused me the most issues with my test cases and memory checks.
+Other than that, I was able to complete the assignment with no serious
+blocks or setbacks which was good. This assignment really helped me know
+when to and when not to allocate memory as well as freeing memory. In
+the case of the Destroy function it is key that each node is freed, because
+when a node is added to the linked list, memory is allocated for it. So when
+removing a node from the list, it must be freed as well. Otherwise valgrind
+will tell you loud and clear that you have memory issues in your program.
