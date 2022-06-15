@@ -1,0 +1,71 @@
+------------------
+- Lab 7 Analysis -
+------------------
+
+For secant method tests, justify choices for second guesses in both tests..
+
+./hw7 -s -t 1E-6 -ba -1.5 -bb -1.6 -v
+./hw7 -s -t 1E-6 -ba 1.5 -bb 1.6 -v
+
+I decided to choose a second guess that was relatively close to the first
+guess. This was done to ensure that the next value for the updated point will
+not become divergent since the slope of the line between the two points is
+more representative of the actual slope of the line. This is done because the
+secant method uses a slope approximation to update the next guess instead of
+using the derivative like the Newton method does. If the second starting
+guess is too far away from the first guess, the third guess (next guess) 
+could be drastically different that the method could diverge and never
+find a root. 
+
+
+---------------------------------
+- Timing & Compile optimization -
+---------------------------------
+
+My approach to testing the optimization was to time only the section
+where in hw7.c one of the root finding methods is called. The timer
+was designed to stop right when the program produced the result. This 
+way we could see exactly how long each method takes to find a root and
+how well the optimization really helped reduce the times. To start this
+analysis, I startet by compiling with the flags -O1 and -DEN_TIME so the
+program would know to time the function by using the Timers.h file. 
+
+The table below shows the average time per iteration for 5 of the same tests.
+This means that each test was ran a total of 5 times for each optimization
+and then those values were averaged to produce the best quality value of 
+execution time for each test / rootfinding method. 
+
+               |    O1    |    O2    |    O3    |
+-------------------------------------------------
+Bisection test | 1.376E-5 | 1.344E-5 | 1.356E-5 |
+-------------------------------------------------
+Newton test 1  | 1.952E-5 | 1.856E-5 | 1.768E-5 |
+-------------------------------------------------
+Newton test 2  | 8.36E-6  | 8.24E-6  | 8.16E-6  |
+-------------------------------------------------
+Secant test 1  | 1.784E-5 | 1.676E-5 | 1.704E-5 |
+-------------------------------------------------
+Secant test 2  | 8.44E-6  | 8.32E-6  | 8.32E-6  |
+-------------------------------------------------
+
+The tests that were used were taken straight from the Makefile.. 
+
+bisection (-2.5, 2.5)
+newton (-1.5)
+newton (1.5)
+secant (-1.5 -1.6)
+secant (1.5, 1.6)
+
+We can make a generalization from the table by saying that overall the 
+optimization of the compiler did have an effect of reducing the times per
+iteration for almost all of the tests. Some did regress on their times, 
+but the majority of the tests benefitted from increasing the compiler 
+optimization of the code. Secondly, A more specific analysis can be made.
+This has to do with the comparison of the Newton and Secant methods. 
+We can see that for the test 1, the secant method was faster on all accounts,
+but for test 2, we can see that the newton method was actually faster than
+the secant method. 
+
+The times for test 2 were a factor of 10 faster because the starting values
+were set to 1.5 which is a lot closer to the root than the -1.5 is from test 
+1. So the root finding methods were able to converge faster on the root.

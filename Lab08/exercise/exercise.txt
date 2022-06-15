@@ -1,0 +1,135 @@
+--------------------
+- in lab exercises -
+--------------------
+
+timing for lab_a.c : 
+
+real	0m1.641s
+user	0m1.632s
+sys	0m0.007s
+Elapsed CPU Time (timer) = 1.630000 sec.
+Elapsed CPU Time per iteration (timer, 1000) = 0.00163 sec.
+
+
+
+timing for lab_c.c : 
+
+real	0m6.379s
+user	0m1.059s
+sys	0m5.313s
+Elapsed CPU Time (timer) = 6.360000 sec.
+Elapsed CPU Time per iteration (timer, 1000) = 0.00636 sec.
+
+
+
+The lab_a.c implementation is wayyy faster of a 2D array implementation
+when compared to lab_c.c 's implementation. 
+
+Elapsed CPU Time speedup = 74.37%
+Elapsed CPU Time per iteration speedup = 73.37%
+Real clock time speedup	= 74.275% 
+
+The time command line feature and our Timers.h time values are strongly
+correlated and show that there is about a 73-75% speedup of the lab_a.c 
+code vs the lab_c.c code.
+
+
+/* recompile both programs with -DREPEAT_NUM=2 */
+
+/* valgrind for lab_a2 */
+
+==28085== Memcheck, a memory error detector
+==28085== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==28085== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==28085== Command: ./lab_a2
+==28085== 
+Elapsed CPU Time (timer) = 0.120000 sec.
+Elapsed CPU Time per iteration (timer, 2) = 0.06 sec.
+==28085== 
+==28085== HEAP SUMMARY:
+==28085==     in use at exit: 0 bytes in 0 blocks
+==28085==   total heap usage: 4 allocs, 4 frees, 16,160,000 bytes allocated
+==28085== 
+==28085== All heap blocks were freed -- no leaks are possible
+==28085== 
+==28085== For lists of detected and suppressed errors, rerun with: -s
+==28085== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+
+/* valgrind for lab_c2 */
+
+==28224== Memcheck, a memory error detector
+==28224== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==28224== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==28224== Command: ./lab_c2
+==28224== 
+Elapsed CPU Time (timer) = 0.190000 sec.
+Elapsed CPU Time per iteration (timer, 2) = 0.095 sec.
+==28224== 
+==28224== HEAP SUMMARY:
+==28224==     in use at exit: 0 bytes in 0 blocks
+==28224==   total heap usage: 20,002 allocs, 20,002 frees, 16,160,000 bytes allocated
+==28224== 
+==28224== All heap blocks were freed -- no leaks are possible
+==28224== 
+==28224== For lists of detected and suppressed errors, rerun with: -s
+==28224== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+/* running both with the size feature */
+
+   text	   data	    bss	    dec	    hex	filename
+   2555	    588	     16	   3159	    c57	./lab_a
+
+   text	   data	    bss	    dec	    hex	filename
+   2820	    588	     16	   3424	    d60	./lab_c
+
+The compiled code is slightly larger for lab_c and the actual file size is
+also slightly larger, but they are close enough to assume that they are the
+same size.
+
+
+/* recompile and run both w/o -DEN_TIME and w/ -DROWS=3 -DCOLS=3 */
+
+./lab_a3
+
+The 3x3 2D dynamic matrix
+ 0.0	 0.1	 0.2	
+ 1.0	 1.1	 1.2	
+ 2.0	 2.1	 2.2	
+
+
+./lab_c3
+
+The 3x3 2D dynamic matrix
+ 0.0	 0.1	 0.2	
+ 1.0	 1.1	 1.2	
+ 2.0	 2.1	 2.2	
+
+
+Both outputs are the same, as was the expected result. The only differeence
+between the two programs is how they allocate and free memory. The clock
+timing stuff didn't run because they are inside a #ifdef macro that is tied
+to the EN_TIME macro. Since we didn't define it, the print array code ran
+(its inside #ifndef EN_TIME) and the timers code didn't run. 
+
+
+/* create lab_d.c and run it */
+
+Honer's performance, ans 2393.000000
+Elapsed CPU Time (timer) = 0.910000 sec.
+Elapsed CPU Time per iteration (timer, 100000000) = 9.1e-09 sec.
+
+Mult performance, ans 2393.000000
+Elapsed CPU Time (timer) = 1.020000 sec.
+Elapsed CPU Time per iteration (timer, 100000000) = 1.02e-08 sec.
+
+Pow performance, ans 2393.000000
+Elapsed CPU Time (timer) = 17.510000 sec.
+Elapsed CPU Time per iteration (timer, 100000000) = 1.751e-07 sec.
+
+
+The results to the equation are identical, but they were not executed
+in the same amount of time.. Honer's was the fastest, followed by the mult
+and the pow equation. Honer's and Mult were about .1s of a difference where
+the pow was super slow and a solid 16.5s slower. 
+

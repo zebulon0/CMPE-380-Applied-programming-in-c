@@ -1,0 +1,144 @@
+----------------
+- exercise.txt -
+----------------
+
+------------------
+- Newton example -
+------------------
+
+1.
+iter:0	x0:1.000000	x1:35.602349	err:34.602349
+iter:1	x0:35.602349	x1:35.685284	err:0.082935
+Newton returned root: 35.685610
+
+
+2.
+The derivative of the motor function is f'(v) = 52.2 + 1.5*v - 0.06*v*v. This
+is the required closed form of the derivative that the Newton method needs to
+be able to calculate a next guess for the root.
+
+3. Changing the guess from 1 to 30
+iter:0	x0:30.000000	x1:34.814815	err:4.814815
+iter:1	x0:34.814815	x1:35.653164	err:0.838349
+iter:2	x0:35.653164	x1:35.685560	err:0.032396
+Newton returned root: 35.685610
+
+4.
+Newton does find the same root as it did previously. The number of iterations
+this time was one more even though the first guess was a lot closer to the
+root that was found the first time. This makes sense because the closer the
+current Newton guess is to the actual root, the smaller of steps that the
+algorithm is going to take for the next guess. This means that in the
+first try with a first guess of 1, the second guess was a larger jump
+due to the slope at that point. That way it was able to get a lot closer
+to the root than the second execution because the slop closer to the root is
+not as steep.
+
+5. 
+A polynomial has as many roots as its degree of the highest exponent. 
+In this case the largest exponent is v^3 = 3 so we can expect to find
+3 roots.
+
+6.
+First guess set to 50.0.......
+
+iter:0	x0:50.000000	x1:53.333333	err:3.333333
+iter:1	x0:53.333333	x1:52.664163	err:0.669170
+iter:2	x0:52.664163	x1:52.633179	err:0.030984
+Newton returned root: 52.633113
+
+
+First guess set to -50.0.......
+
+iter:0	x0:-50.000000	x1:-50.833333	err:0.833333
+iter:1	x0:-50.833333	x1:-50.818728	err:0.014606
+Newton returned root: -50.818723
+
+
+
+
+
+
+
+
+
+---------------------
+- Bisection Example -
+---------------------
+
+1. 
+Done.
+
+
+2.
+The voltage constants are defined as doubles because all of the results for
+the midpoint values and roots will be doubles as well. This allows the
+solutions for the roots that are found to be the most accurate as possible.
+
+
+3.
+The A and B variables represent the starting bracket endpoints for the
+Bisection method. This tells the algorithm that the root is located
+somewhere between the A and B variables that it is given.
+
+
+4. 
+iter:0    a:0.000000    b:50.000000    x:25.000000    err:25.000000
+iter:1    a:25.000000    b:50.000000    x:37.500000    err:12.500000
+iter:2    a:25.000000    b:37.500000    x:31.250000    err:6.250000
+iter:3    a:31.250000    b:37.500000    x:34.375000    err:3.125000
+iter:4    a:34.375000    b:37.500000    x:35.937500    err:1.562500
+iter:5    a:34.375000    b:35.937500    x:35.156250    err:0.781250
+iter:6    a:35.156250    b:35.937500    x:35.546875    err:0.390625
+iter:7    a:35.546875    b:35.937500    x:35.742188    err:0.195312
+iter:8    a:35.546875    b:35.742188    x:35.644531    err:0.097656
+iter:9    a:35.644531    b:35.742188    x:35.693359    err:0.048828
+iter:10    a:35.644531    b:35.693359    x:35.668945    err:0.024414
+iter:11    a:35.668945    b:35.693359    x:35.681152    err:0.012207
+Bisection returned root: 35.687256
+
+
+5.
+iter:0    a:-100.000000    b:0.000000    x:-50.000000    err:50.000000
+iter:1    a:-100.000000    b:-50.000000    x:-75.000000    err:25.000000
+iter:2    a:-75.000000    b:-50.000000    x:-62.500000    err:12.500000
+iter:3    a:-62.500000    b:-50.000000    x:-56.250000    err:6.250000
+iter:4    a:-56.250000    b:-50.000000    x:-53.125000    err:3.125000
+iter:5    a:-53.125000    b:-50.000000    x:-51.562500    err:1.562500
+iter:6    a:-51.562500    b:-50.000000    x:-50.781250    err:0.781250
+iter:7    a:-51.562500    b:-50.781250    x:-51.171875    err:0.390625
+iter:8    a:-51.171875    b:-50.781250    x:-50.976562    err:0.195312
+iter:9    a:-50.976562    b:-50.781250    x:-50.878906    err:0.097656
+iter:10    a:-50.878906    b:-50.781250    x:-50.830078    err:0.048828
+iter:11    a:-50.830078    b:-50.781250    x:-50.805664    err:0.024414
+iter:12    a:-50.830078    b:-50.805664    x:-50.817871    err:0.012207
+Bisection returned root: -50.823975
+
+iter:0    a:40.000000    b:100.000000    x:70.000000    err:30.000000
+iter:1    a:40.000000    b:70.000000    x:55.000000    err:15.000000
+iter:2    a:40.000000    b:55.000000    x:47.500000    err:7.500000
+iter:3    a:47.500000    b:55.000000    x:51.250000    err:3.750000
+iter:4    a:51.250000    b:55.000000    x:53.125000    err:1.875000
+iter:5    a:51.250000    b:53.125000    x:52.187500    err:0.937500
+iter:6    a:52.187500    b:53.125000    x:52.656250    err:0.468750
+iter:7    a:52.187500    b:52.656250    x:52.421875    err:0.234375
+iter:8    a:52.421875    b:52.656250    x:52.539062    err:0.117188
+iter:9    a:52.539062    b:52.656250    x:52.597656    err:0.058594
+iter:10    a:52.597656    b:52.656250    x:52.626953    err:0.029297
+iter:11    a:52.626953    b:52.656250    x:52.641602    err:0.014648
+Bisection returned root: 52.634277
+
+The three roots are at -50.82, 35.69, and 52.63
+
+
+6.
+The bisection algorithm does find the same roots as the newton
+algorithm has found. The difference is that for the bisection algorithm,
+each root was found in an average of 12 iterations / loops. Comparing this
+to the results of the newtons algorithm which found its roots in an average
+of 3 iterations / loops, it is clear which algorithm is faster at finding
+roots of a polynomial. 
+
+
+7.
+Same as previously stated in 6...

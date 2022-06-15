@@ -1,0 +1,29 @@
+total 132
+-rw-rw---- 1 zah1276 student 84064 Mar 31 09:13 data.txt
+drwxrwx--- 2 zah1276 student   259 Mar 22 17:27 exercise
+-rwxrwx--- 1 zah1276 student 12976 Mar 31 09:34 hw8c
+-rw-rw---- 1 zah1276 student  9083 Mar 31 09:40 hw8c.c
+-rw-rw---- 1 zah1276 student     0 Mar 31 09:42 ls.txt
+drwxrwx--- 2 zah1276 student   124 Mar 23 20:21 prelab
+-rw-rw---- 1 zah1276 student  9904 Oct 21 19:28 results.txt
+-rw-rw---- 1 zah1276 student  7929 Mar 31 09:13 Timers.h
+
+total 136
+-rw-rw---- 1 zah1276 student 84064 Mar 31 09:13 data.txt
+drwxrwx--- 2 zah1276 student   259 Mar 22 17:27 exercise
+-rwxrwx--- 1 zah1276 student 12976 Mar 31 09:34 hw8c
+-rw-rw---- 1 zah1276 student  9083 Mar 31 09:40 hw8c.c
+-rw-rw---- 1 zah1276 student   459 Mar 31 09:42 ls.txt
+drwxrwx--- 2 zah1276 student   124 Mar 23 20:21 prelab
+-rw-rw---- 1 zah1276 student  9904 Oct 21 19:28 results.txt
+-rw-rw---- 1 zah1276 student  7929 Mar 31 09:13 Timers.h
+
+total 136
+-rw-rw---- 1 zah1276 student 84064 Mar 31 09:13 data.txt
+drwxrwx--- 2 zah1276 student   259 Mar 22 17:27 exercise
+-rwxrwx--- 1 zah1276 student 12976 Mar 31 09:34 hw8c
+-rw-rw---- 1 zah1276 student  9083 Mar 31 09:40 hw8c.c
+-rw-rw---- 1 zah1276 student   918 Mar 31 09:42 ls.txt
+drwxrwx--- 2 zah1276 student   124 Mar 23 20:21 prelab
+-rw-rw---- 1 zah1276 student  9904 Oct 21 19:28 results.txt
+-rw-rw---- 1 zah1276 student  7929 Mar 31 09:13 Timers.h

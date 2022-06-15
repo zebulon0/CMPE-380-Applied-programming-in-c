@@ -1,0 +1,105 @@
+------------------
+- Prelab answers -
+------------------
+
+1. What is the minimum requirement for root finding using bisection?
+
+The two guesses A and B must bracket the root. e.g. the sign of the upper endpoint and lower endpoint
+must not be the same sign. 
+
+
+
+2. How do you know when you have found a root?
+
+When the evaluation of f(m) == 0 or somewhere close to it that it meets a predefined tolerance
+that is set by the user / programmer.
+
+
+
+3. Is the root found ever exactly zero?
+
+The "value of the root found is almost NEVER 0.0 but rather a very small number near zero.
+In any root finding algorithm a non-zero tolerance must be specified and used."
+
+
+
+4. What is the basic bisection algorithm?
+
+Essentially it is working just like a binary search does... First it starts with the given range as
+the first two endpoints. Then it calculates a midpoint and evaluates that midpoint to see if 
+it is the root. If it isn't the root then the algorithm will replace one of the endpoints with the same
+sign as the midpoint and use the midpoint as the new endpoint for the bracket. The range gets halved and halved
+until a root is found or the midpoint that is evaluated is within the accepted tolerance set by the user. This
+makes sense because the value of the root that is found is almost never exactly 0.0. 
+
+
+
+5. When you bisect the roots, how do you pick the endpoint root to change?
+
+The endpoint root to change is the one with the same sign as the midpoint that
+was evaluated.
+
+
+6. What is the basic idea behind Newton and Secant algorithms?
+
+They start with an initial best guess for what the root of the function is. If the first guess is wrong, it then
+uses the slope to determine the next guess to make. This is an iterative process and is faster than the bisection
+method because these methods are open methods instead of bracketing methods. The downfall to this is that for certain
+functions, the algorithm could diverge and miss the root completely. In this case the "escape hatch" will be used to
+prevent the program from infinitely looping. 
+
+
+
+7. Why is an escape hatch required for Newton and Secant?
+
+An escape hatch is necessary because in the case that the algorithm diverges from
+the real root, it will continue infinitely in the wrong direction until the root is
+found (which won't happen) thus stuck in an infinite loop. The only way to prevent
+this from happening is to have an escape hatch. This could be setting a number of 
+iterations for the algorithm and if the root isn't found during the given number 
+of loops, it returns its best guess and exits.
+
+
+
+8. What special requirement does Newton have that Secant doesn't?
+
+The Newton method requires a "closed form" expression for the derivative
+and the Secant method doesn't require a derivative.
+
+
+9. What are the Newton and Secant update equations?
+
+Newton: Xn+1 = Xn - f(Xn)/f'(Xn)
+Secant: Xn+1 = Xn - f(Xn)[(Xn - "Xn-1")/(f(Xn) - f("Xn-1"))] ***
+*** Where "Xn-1" refers to the Xn value used before the current Xn value
+
+
+
+10. How does the 2nd guess of the Secant differ from the 2nd bisection guess?
+
+The second guess for the Secant method is near the first guess that was used. 
+The second guess for the bisection method is required to bracket the root and
+is normally half the range away from the previous guess.
+
+
+
+11. Why doesn't Newton require a second guess?
+
+Newton's method uses one point and the slope to find the next guess. 
+It doesn't rely on two points to find the next point like the Secant 
+algorithm does. Newton method uses the point and the slope at that point
+to calculate the value of the next guess.
+
+
+
+12. Why do we use the fabs() function instead of the abs() function in all of our root finding code?
+
+The fabs() function is used for floating points and the abs() function is used for integers
+
+
+
+13. In Newton, why do we check for a zero-slope using: if (fabs(dx0) < atol) rather than if (fabs(dx0) == 0.0)?
+
+The root that is found will almost NEVER be exactly 0.0 so we have to account for that by seeing if the magnitude
+of the current guessed root is within the set tolerance. This way we can find the "root" without the program taking
+forever to find a root that evaluates to exactly zero.

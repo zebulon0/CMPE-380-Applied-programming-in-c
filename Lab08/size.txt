@@ -1,0 +1,8 @@
+   text	   data	    bss	    dec	    hex	filename
+   3044	    612	     16	   3672	    e58	hw8c
+   
+   text	   data	    bss	    dec	    hex	filename
+   3044	    612	     16	   3672	    e58	hw8c
+   
+   text	   data	    bss	    dec	    hex	filename
+   3044	    612	     16	   3672	    e58	hw8c

@@ -1,0 +1,128 @@
+Testing hw8c_0:
+Elapsed CPU Time (DataTimer) = 10.870000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.1087 sec.
+Elapsed CPU Time (CalcTimer) = 0.640000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 3.2e-05 sec.
+Base code, no performance changes
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+Testing hw8c:
+Elapsed CPU Time (DataTimer) = 1.680000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0168 sec.
+Elapsed CPU Time (CalcTimer) = 0.140000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 7e-06 sec.
+Base code, no performance changes
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+Testing hw8c_2:
+Elapsed CPU Time (DataTimer) = 1.600000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.016 sec.
+Elapsed CPU Time (CalcTimer) = 0.140000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 7e-06 sec.
+Base code, no performance changes
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+Testing hw8c_3:
+Elapsed CPU Time (DataTimer) = 1.580000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0158 sec.
+Elapsed CPU Time (CalcTimer) = 0.140000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 7e-06 sec.
+Base code, no performance changes
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+Testing hw8c_opt1_0:
+Elapsed CPU Time (DataTimer) = 0.190000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0019 sec.
+Elapsed CPU Time (CalcTimer) = 0.660000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 3.3e-05 sec.
+Adds x2 memory growth and realloc to the base code
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+Testing hw8c_opt1:
+Elapsed CPU Time (DataTimer) = 0.190000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0019 sec.
+Elapsed CPU Time (CalcTimer) = 0.160000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 8e-06 sec.
+Adds x2 memory growth and realloc to the base code
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+Testing hw8c_opt1_2:
+Elapsed CPU Time (DataTimer) = 0.190000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0019 sec.
+Elapsed CPU Time (CalcTimer) = 0.160000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 8e-06 sec.
+Adds x2 memory growth and realloc to the base code
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+Testing hw8c_opt1_3:
+Elapsed CPU Time (DataTimer) = 0.190000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0019 sec.
+Elapsed CPU Time (CalcTimer) = 0.160000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 8e-06 sec.
+Adds x2 memory growth and realloc to the base code
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+Testing hw8c_opt2_0:
+Elapsed CPU Time (DataTimer) = 7.830000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0783 sec.
+Elapsed CPU Time (CalcTimer) = 0.600000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 3e-05 sec.
+Adds native loop unrolling to the base code
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+Testing hw8c_opt2:
+Elapsed CPU Time (DataTimer) = 1.690000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0169 sec.
+Elapsed CPU Time (CalcTimer) = 0.140000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 7e-06 sec.
+Adds native loop unrolling to the base code
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+Testing hw8c_opt2_2:
+Elapsed CPU Time (DataTimer) = 1.560000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0156 sec.
+Elapsed CPU Time (CalcTimer) = 0.140000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 7e-06 sec.
+Adds native loop unrolling to the base code
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+Testing hw8c_opt2_3:
+Elapsed CPU Time (DataTimer) = 1.600000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.016 sec.
+Elapsed CPU Time (CalcTimer) = 0.140000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 7e-06 sec.
+Adds native loop unrolling to the base code
+500000 data lines processed, the least square line is : Y = 1.26393 * X + 0.823035
+ 
+Testing hw8c_opt3_0:
+Elapsed CPU Time (DataTimer) = 9.220000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0922 sec.
+Elapsed CPU Time (CalcTimer) = 0.580000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 2.9e-05 sec.
+Adds smarter loop unrolling to the base code
+500000 data lines processed, the least square line is : Y = 1.26544 * X + 0.106488
+ 
+Testing hw8c_opt3:
+Elapsed CPU Time (DataTimer) = 1.690000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0169 sec.
+Elapsed CPU Time (CalcTimer) = 0.070000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 3.5e-06 sec.
+Adds smarter loop unrolling to the base code
+500000 data lines processed, the least square line is : Y = 1.26544 * X + 0.106488
+ 
+Testing hw8c_opt3_2:
+Elapsed CPU Time (DataTimer) = 1.560000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0156 sec.
+Elapsed CPU Time (CalcTimer) = 0.070000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 3.5e-06 sec.
+Adds smarter loop unrolling to the base code
+500000 data lines processed, the least square line is : Y = 1.26544 * X + 0.106488
+ 
+Testing hw8c_opt3_3:
+Elapsed CPU Time (DataTimer) = 1.570000 sec.
+Elapsed CPU Time per iteration (DataTimer, 100) = 0.0157 sec.
+Elapsed CPU Time (CalcTimer) = 0.070000 sec.
+Elapsed CPU Time per iteration (CalcTimer, 20000) = 3.5e-06 sec.
+Adds smarter loop unrolling to the base code
+500000 data lines processed, the least square line is : Y = 1.26544 * X + 0.106488
+ 

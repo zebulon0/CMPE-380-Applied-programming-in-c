@@ -1,0 +1,144 @@
+---------------------------------
+-				-
+-	Analysis.txt		-
+-	Zeb Hollinger		-
+-				-
+---------------------------------
+
+/* hw8c.c data */
+Base code with no changes
+-----------------------------------------------------------------
+|############################## |  -O0	|  -O1	|  -O2	|  -O3	|
+-----------------------------------------------------------------
+|Data timer per iteration	| .0962	| .0170	|.0157	|.0156	|
+-----------------------------------------------------------------
+|Calculation timer per iteration| .6400	| 7e-6	|6.5e-6	|7e-6	|
+-----------------------------------------------------------------
+|ls -l				|16760	|20480	|20968	|23776	|
+-----------------------------------------------------------------
+|text (code) size		|5168	|3663	|3727	|4111	|
+-----------------------------------------------------------------
+|data size			|628	|620	|620	|620	|
+-----------------------------------------------------------------
+
+
+/* hw8c_opt1.c data */
+Added more efficient memory management for the AddPoint() function.
+Removed the inefficient malloc, copy and free code and replaced it with
+reallocs to handle the new data point being added
+-----------------------------------------------------------------
+|############################## |  -O0	|  -O1	|  -O2	|  -O3	|
+-----------------------------------------------------------------
+|Data timer per iteration	|.0019	|.0018	|.0018	|.0019	|
+-----------------------------------------------------------------
+|Calculation timer per iteration|3.35e-5|8e-6	|8e-6	|8e-6	|
+-----------------------------------------------------------------
+|ls -l				|16704	|20088	|20504	|22560	|
+-----------------------------------------------------------------
+|text (code) size		|5050	|3585	|3585	|3841	|
+-----------------------------------------------------------------
+|data size			|636	|628	|628	|628	|
+-----------------------------------------------------------------
+ 
+
+/* hw8c_opt2.c data */
+Loop unroll CalculateCoefficients() by two. This was done by doubling
+the current code inside the for loop and changing the increment amount
+to add 2 each time the for loop continues. 
+-----------------------------------------------------------------
+|############################## |  -O0	|  -O1	|  -O2	|  -O3	|
+-----------------------------------------------------------------
+|Data timer per iteration	|.0969	|.0171	|.0158	|.0156	|
+-----------------------------------------------------------------
+|Calculation timer per iteration| 3e-5	|7e-6	|6.5e-6	|7e-6	|
+-----------------------------------------------------------------
+|ls -l				|16800	|20568	|21112	|23944	|
+-----------------------------------------------------------------
+|text (code) size		|5416	|3735	|3799	|4247	|
+-----------------------------------------------------------------
+|data size			|628	|620	|620	|620	|
+-----------------------------------------------------------------
+
+
+/* hw8c_opt3.c data */
+Same changes as _opt2 but the second unroll of the loop will use temporoary
+variables instead of the same variables twice in the for loop. For each for
+loop iteration, each variable will only be assigned once instead of the two
+times like the _opt2 code had done. 
+-----------------------------------------------------------------
+|############################## |  -O0	|  -O1	|  -O2	|  -O3	|
+-----------------------------------------------------------------
+|Data timer per iteration	|.1191	|.017	|.0156	|.0157	|
+-----------------------------------------------------------------
+|Calculation timer per iteration|2.85e-5|3.5e-6	|3.5e-6	|3e-6	|
+-----------------------------------------------------------------
+|ls -l				|16888	|20552	|21048	|23880	|
+-----------------------------------------------------------------
+|text (code) size		|5448	|3687	|3751	|4151	|
+-----------------------------------------------------------------
+|data size			|628	|620	|620	|620	|
+-----------------------------------------------------------------
+
+/* hw8c.c vs. hwc_opt1.c */
+The data times were increased across the board of a factor of 10. 
+Aside from that the calculation times were actually adversely affected
+by the cahnge. At level 0 the _opt1 speed was a lot faster, but for the 
+remaining calculation times, it was slower by 1e-6s or a microsecond. 
+Although it is not a drastic difference, it is an interesting thing to
+see because we expect a performance change to the code to positively
+affect the execution times in every scenario.
+
+
+/* hw8c.c vs. hw8c_opt2.c */
+The loop unrolling gains are only seen at level 0 optimization...
+All of the data times are the same, and all of the level 1-3 calculation
+times are the same between the two binaries. The only performance gain
+happened with no optimization and the increase was about a factor of 
+10^4 because it went from 6.4e-1s to 3e-5s which is a difference of about
+e4 aka 10^4.
+
+
+
+/* what specific conclusion can you draw from the data? */
+The data shows that the most gains in execution speed will happen from
+level 0 to level 1 optimization... The time differences between levels 1-3
+are close. Ultiimately level 3 optimization is the best because its time
+is the fastest. As optimization increases, the size of the binary from
+"ls -l" will increase, the code size will be less than level 0 but level 3
+will be larger than level 1-2. The data size of leves 1-3 are all the same
+and all smaller than the original level 0 data size. 
+
+
+/* any general conclusions that can be made? */
+In general, it looks like the higher the optimization that is used for 
+compilation, results in faster performance. 
+
+
+/* Was _opt3 much faster than _opt2 ?? */ 
+/* Does adding a few extra temp vars help performance? */
+It was faster than _opt2 by about a factor of 2 from levels 1-3
+Even without optimization, we see that opt3 was 2.85e-5s and opt2 was 
+3e-5 which just shows that at its very base, the changes were helpful by
+increasing the program performance. It seems that by using the local
+variables in the loop instead of writing to the same variables twice, 
+it resulted in a speed increase of 2x. 
+
+
+/* What was the impact of the compiler optimization levels on */
+/* binary size and speed? */
+Compiler optimization definitely reduced the data size for the binaries.
+The actual code size was always smaller than it was for -O0, but for the
+highest optimization, the code size was larger than the -O1 and -O2 options.
+As a generalization between -O0 and -O3 there was a speed increase for the 
+data and calculation times by a factor of 10. Taking hw8c_opt3 as an example,
+the data time for no optimization was .1191s and the fastest time was .0157s.
+Likewise, the calculation times went from 2.85e-5 to 3e-6. 
+
+
+
+
+/* Does a higher level always help? */
+In general, yes! Most of the speed gains are found between -0 and -1 but,
+there will still be smaller increases in speed as the level is increased.
+
+
