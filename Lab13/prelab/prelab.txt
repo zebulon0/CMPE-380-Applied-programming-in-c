@@ -1,0 +1,87 @@
+---------------------------------
+-				-
+-	prelab.txt		-
+-	Zeb Hollinger		-
+-				-
+---------------------------------
+
+/* Threading concepts */
+
+
+/* QUIZ ON PTHREADS */
+
+
+/* What is 'thread safe' coding ? */
+	- don't use any static or global variables
+
+	- use automatic variable and malloc() variables
+
+	- if must use static/global vars: use ONLY in Read-Only mode
+	  OR protect them with mutexes
+
+	- Don't use thread-unsafe functions OR
+	  protect them with mutexes (e.g. strtok() is not safe)
+
+	- don't use functions or programs that assume that 
+	  global variables won't be changed/touched during execution
+-----------------------------------------------------------------------------
+
+/* What is a thread safe library ? */
+	- doesn't set global vars and assume that the vars won't ever
+	  be changed during the execution
+-----------------------------------------------------------------------------
+
+
+/* How can threading improve performance ? */
+Multithreading adds complexity to solutions but also can
+dramatically improve overall performance. 
+-----------------------------------------------------------------------------
+
+
+/* Why would you use threads on a single CPU ? */
+Doesn't improve performance on a single CPU system.
+
+Threads free up resources for other processes to use concurrently
+-----------------------------------------------------------------------------
+
+
+/* How do threads impact your stack space? */
+Each thread shares address space. Shares global memory, stack, and heap.
+-----------------------------------------------------------------------------
+
+
+/* Explaining basic thread functions... */
+
+pthread_create()	creates a new thread. Returns 0 if creation was successful and
+			anything else means there was an error.
+-----------------------------------------------------------------------------
+
+
+pthread_mutex_init()	initializes the mutex, takes in a variable 'lock'
+			which is defined once in the global space.
+-----------------------------------------------------------------------------
+
+
+pthread_mutex_lock()	locks the mutex. each thread will check 'lock' before accessing
+			shared resources. The first process to call the function will
+			block access for all other threads calling the same lock.
+-----------------------------------------------------------------------------
+
+
+pthread_mutex_unlock()	MUST be called when access to the resource is complete or other
+			processes will be blocked forever. Releases the mutex object.
+-----------------------------------------------------------------------------
+
+
+pthread_join()		wait for a thread to terminate. Used to identify when a thread
+			completes. Returns zero when success anything else when error.
+-----------------------------------------------------------------------------
+
+
+pthread_exit()		terminates a thread. used when a thread is 'stuck' and 
+			doesn't return/complete.
+-----------------------------------------------------------------------------
+
+
+sleep()			causes Linux and pthreads to pause, defined in <unistd.h>
+-----------------------------------------------------------------------------

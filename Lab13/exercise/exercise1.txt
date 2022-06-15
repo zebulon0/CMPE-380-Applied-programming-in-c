@@ -1,0 +1,375 @@
+---------------------------------
+-				-
+-	exercise.txt		-
+-	Zeb Hollinger		-
+-				-
+---------------------------------
+
+
+/* add call to create a thread */
+
+Main: Starting thread...
+Main: All threads started...
+Main will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+Main will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+Exiting main thread
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+---------------------------------------------------------------------------
+
+/* run valgrind */
+
+==2378== Memcheck, a memory error detector
+==2378== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==2378== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==2378== Command: ./lab_a
+==2378== 
+==2378== Thread 2:
+==2378== Conditional jump or move depends on uninitialised value(s)
+==2378==    at 0x509DC5E: vfprintf (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x50A64C8: printf (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x4007AB: mySimpleThread (lab_a.c:61)
+==2378==    by 0x4E3EEA4: start_thread (in /usr/lib64/libpthread-2.17.so)
+==2378==    by 0x515198C: clone (in /usr/lib64/libc-2.17.so)
+==2378==  Uninitialised value was created by a stack allocation
+==2378==    at 0x51421D0: __exit_thread (in /usr/lib64/libc-2.17.so)
+==2378== 
+==2378== Use of uninitialised value of size 8
+==2378==    at 0x509B32B: _itoa_word (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x509F5B0: vfprintf (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x50A64C8: printf (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x4007AB: mySimpleThread (lab_a.c:61)
+==2378==    by 0x4E3EEA4: start_thread (in /usr/lib64/libpthread-2.17.so)
+==2378==    by 0x515198C: clone (in /usr/lib64/libc-2.17.so)
+==2378==  Uninitialised value was created by a stack allocation
+==2378==    at 0x51421D0: __exit_thread (in /usr/lib64/libc-2.17.so)
+==2378== 
+==2378== Conditional jump or move depends on uninitialised value(s)
+==2378==    at 0x509B335: _itoa_word (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x509F5B0: vfprintf (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x50A64C8: printf (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x4007AB: mySimpleThread (lab_a.c:61)
+==2378==    by 0x4E3EEA4: start_thread (in /usr/lib64/libpthread-2.17.so)
+==2378==    by 0x515198C: clone (in /usr/lib64/libc-2.17.so)
+==2378==  Uninitialised value was created by a stack allocation
+==2378==    at 0x51421D0: __exit_thread (in /usr/lib64/libc-2.17.so)
+==2378== 
+==2378== Conditional jump or move depends on uninitialised value(s)
+==2378==    at 0x509F5FF: vfprintf (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x50A64C8: printf (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x4007AB: mySimpleThread (lab_a.c:61)
+==2378==    by 0x4E3EEA4: start_thread (in /usr/lib64/libpthread-2.17.so)
+==2378==    by 0x515198C: clone (in /usr/lib64/libc-2.17.so)
+==2378==  Uninitialised value was created by a stack allocation
+==2378==    at 0x51421D0: __exit_thread (in /usr/lib64/libc-2.17.so)
+==2378== 
+==2378== Conditional jump or move depends on uninitialised value(s)
+==2378==    at 0x509DD2B: vfprintf (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x50A64C8: printf (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x4007AB: mySimpleThread (lab_a.c:61)
+==2378==    by 0x4E3EEA4: start_thread (in /usr/lib64/libpthread-2.17.so)
+==2378==    by 0x515198C: clone (in /usr/lib64/libc-2.17.so)
+==2378==  Uninitialised value was created by a stack allocation
+==2378==    at 0x51421D0: __exit_thread (in /usr/lib64/libc-2.17.so)
+==2378== 
+==2378== Conditional jump or move depends on uninitialised value(s)
+==2378==    at 0x509DDAE: vfprintf (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x50A64C8: printf (in /usr/lib64/libc-2.17.so)
+==2378==    by 0x4007AB: mySimpleThread (lab_a.c:61)
+==2378==    by 0x4E3EEA4: start_thread (in /usr/lib64/libpthread-2.17.so)
+==2378==    by 0x515198C: clone (in /usr/lib64/libc-2.17.so)
+==2378==  Uninitialised value was created by a stack allocation
+==2378==    at 0x51421D0: __exit_thread (in /usr/lib64/libc-2.17.so)
+==2378== 
+Main: Starting thread...
+Main: All threads started...
+Main will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+Main will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+Exiting main thread
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+==2378== 
+==2378== HEAP SUMMARY:
+==2378==     in use at exit: 560 bytes in 1 blocks
+==2378==   total heap usage: 6 allocs, 5 frees, 2,192 bytes allocated
+==2378== 
+==2378== Thread 1:
+==2378== 560 bytes in 1 blocks are possibly lost in loss record 1 of 1
+==2378==    at 0x4C2C089: calloc (vg_replace_malloc.c:762)
+==2378==    by 0x4012784: _dl_allocate_tls (in /usr/lib64/ld-2.17.so)
+==2378==    by 0x4E3F87B: pthread_create@@GLIBC_2.2.5 (in /usr/lib64/libpthread-2.17.so)
+==2378==    by 0x400709: main (lab_a.c:32)
+==2378== 
+==2378== LEAK SUMMARY:
+==2378==    definitely lost: 0 bytes in 0 blocks
+==2378==    indirectly lost: 0 bytes in 0 blocks
+==2378==      possibly lost: 560 bytes in 1 blocks
+==2378==    still reachable: 0 bytes in 0 blocks
+==2378==         suppressed: 0 bytes in 0 blocks
+==2378== 
+==2378== For lists of detected and suppressed errors, rerun with: -s
+==2378== ERROR SUMMARY: 19 errors from 7 contexts (suppressed: 0 from 0)
+
+
+Yeah we had some memory errors here... Data in use at exit, jump or move depending
+on unitialized values. 
+---------------------------------------------------------------------------
+
+
+/* adding pthread_join() */
+
+Main: Starting thread...
+Main: All threads started...
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+Value of rcp = 0
+Main will sleep 1 second. 
+Main will sleep 1 second. 
+Exiting main thread
+
+This output is definitely different than before. There isn't a thread running
+after the main thread is exited.
+---------------------------------------------------------------------------
+
+/* memtst on lab_b.c with added pthread_join() */
+
+
+==10999== Memcheck, a memory error detector
+==10999== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==10999== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==10999== Command: ./lab_b
+==10999== 
+Main: Starting thread...
+Main: All threads started...
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+Value of rcp = 0
+Main will sleep 1 second. 
+Main will sleep 1 second. 
+Exiting main thread
+==10999== 
+==10999== HEAP SUMMARY:
+==10999==     in use at exit: 0 bytes in 0 blocks
+==10999==   total heap usage: 6 allocs, 6 frees, 2,192 bytes allocated
+==10999== 
+==10999== All heap blocks were freed -- no leaks are possible
+==10999== 
+==10999== For lists of detected and suppressed errors, rerun with: -s
+==10999== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+We see no errors here this time! Before the thread had no exit and by adding
+a mechanism to identify when the thread was actually finished. 
+---------------------------------------------------------------------------
+
+/* lab_c.c with 3 total threads now */
+Main: Starting thread...
+Main: All threads started...
+     Thread 1, will sleep 1 second. 
+     Thread 2, will sleep 1 second. 
+     Thread 3, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 2, will sleep 1 second. 
+     Thread 3, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 2, will sleep 1 second. 
+     Thread 3, will sleep 1 second. 
+     Thread 2, will sleep 1 second. 
+     Thread 3, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 3, will sleep 1 second. 
+     Thread 2, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 3, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 2, will sleep 1 second. 
+Value of rcp = 1
+Value of rcp = 2
+Value of rcp = 3
+Main will sleep 1 second. 
+Main will sleep 1 second. 
+Exiting main thread
+
+The new code has printouts for all 3 threads. They each have different return
+codes as well. 
+---------------------------------------------------------------------------
+
+
+/* lab_c.c memcheck */
+==25479== Memcheck, a memory error detector
+==25479== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==25479== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==25479== Command: ./lab_c
+==25479== 
+Main: Starting thread...
+     Thread 1, will sleep 1 second. 
+     Thread 2, will sleep 1 second. 
+Main: All threads started...
+     Thread 3, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 2, will sleep 1 second. 
+     Thread 3, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 2, will sleep 1 second. 
+     Thread 3, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 2, will sleep 1 second. 
+     Thread 3, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 2, will sleep 1 second. 
+     Thread 3, will sleep 1 second. 
+     Thread 1, will sleep 1 second. 
+     Thread 2, will sleep 1 second. 
+     Thread 3, will sleep 1 second. 
+Value of rcp = 1
+Value of rcp = 2
+Value of rcp = 3
+Main will sleep 1 second. 
+Main will sleep 1 second. 
+Exiting main thread
+==25479== 
+==25479== HEAP SUMMARY:
+==25479==     in use at exit: 0 bytes in 0 blocks
+==25479==   total heap usage: 8 allocs, 8 frees, 3,312 bytes allocated
+==25479== 
+==25479== All heap blocks were freed -- no leaks are possible
+==25479== 
+==25479== For lists of detected and suppressed errors, rerun with: -s
+==25479== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+
+No memory leaks which is good. Thread execution before the "all threads
+started" printout seems to be uncontrolable since 3 threads have to be 
+created before the print statement executes.
+---------------------------------------------------------------------------
+
+
+
+/* lab_d.c using a global variable 'processed' */
+The shared global variable requires a volatile modifier because
+the compiler doesn't know that there are threads that will be using it.
+
+Main: Starting thread...
+     Thread 1, will sleep 1 second.
+Main: All threads started...
+     Thread 2, will sleep 1 second.
+Main will sleep 1 second. 
+     Thread 3, will sleep 1 second.
+processed = 3
+     Thread 2, will sleep 1 second.
+Main will sleep 1 second. 
+processed = 4
+     Thread 1, will sleep 1 second.
+     Thread 3, will sleep 1 second.
+     Thread 2, will sleep 1 second.
+Main will sleep 1 second. 
+processed = 7
+     Thread 1, will sleep 1 second.
+     Thread 3, will sleep 1 second.
+Main will sleep 1 second. 
+     Thread 2, will sleep 1 second.
+processed = 10
+     Thread 3, will sleep 1 second.
+     Thread 1, will sleep 1 second.
+Main will sleep 1 second. 
+     Thread 2, will sleep 1 second.
+processed = 13
+     Thread 3, will sleep 1 second.
+     Thread 1, will sleep 1 second.
+Main will sleep 1 second. 
+     Thread 2, will sleep 1 second.
+processed = 16
+     Thread 3, will sleep 1 second.
+     Thread 1, will sleep 1 second.
+Main will sleep 1 second. 
+processed = 18
+Main will sleep 1 second. 
+processed = 18
+Main will sleep 1 second. 
+processed = 18
+Main will sleep 1 second. 
+processed = 18
+Value of rcp = 1
+Value of rcp = 2
+Value of rcp = 3
+wall time = 10s
+Exiting main thread
+---------------------------------------------------------------------------
+
+
+/* memtst for lab_d.c */
+
+==8398== Memcheck, a memory error detector
+==8398== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8398== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==8398== Command: ./lab_d
+==8398== 
+Main: Starting thread...
+     Thread 1, will sleep 1 second.
+     Thread 3, will sleep 1 second.
+     Thread 2, will sleep 1 second.
+Main: All threads started...
+Main will sleep 1 second. 
+processed = 3
+     Thread 1, will sleep 1 second.
+     Thread 3, will sleep 1 second.
+Main will sleep 1 second. 
+processed = 5
+     Thread 2, will sleep 1 second.
+     Thread 3, will sleep 1 second.
+     Thread 1, will sleep 1 second.
+Main will sleep 1 second. 
+processed = 8
+     Thread 2, will sleep 1 second.
+     Thread 3, will sleep 1 second.
+     Thread 1, will sleep 1 second.
+Main will sleep 1 second. 
+processed = 11
+     Thread 2, will sleep 1 second.
+     Thread 3, will sleep 1 second.
+     Thread 1, will sleep 1 second.
+Main will sleep 1 second. 
+processed = 14
+     Thread 2, will sleep 1 second.
+     Thread 3, will sleep 1 second.
+     Thread 1, will sleep 1 second.
+Main will sleep 1 second. 
+processed = 17
+     Thread 2, will sleep 1 second.
+Main will sleep 1 second. 
+processed = 18
+Main will sleep 1 second. 
+processed = 18
+Main will sleep 1 second. 
+processed = 18
+Main will sleep 1 second. 
+processed = 18
+Value of rcp = 1
+Value of rcp = 2
+Value of rcp = 3
+wall time = 10s
+Exiting main thread
+==8398== 
+==8398== HEAP SUMMARY:
+==8398==     in use at exit: 0 bytes in 0 blocks
+==8398==   total heap usage: 8 allocs, 8 frees, 3,312 bytes allocated
+==8398== 
+==8398== All heap blocks were freed -- no leaks are possible
+==8398== 
+==8398== For lists of detected and suppressed errors, rerun with: -s
+==8398== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

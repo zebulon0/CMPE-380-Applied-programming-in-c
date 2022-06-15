@@ -1,0 +1,69 @@
+-------------------------
+-			-
+-	prelab.txt	-
+-			-
+-------------------------
+
+/* be prepared to answer simple bash shell questions */
+
+	- Shell programming allows you to automate tasks
+	- Kernel: core of os, used for device mgmt., file & I/O, and process mgmt.
+	- Shell: enables the user to interact with the kernel
+
+	- Terminal: used to type readable commands and pass them to the shell
+	*** the terminal is an application to display the output from the shell
+
+	- BASH (Bourne Again SHell): default shell in most systems
+
+	- CSH (C SHell): special shell which uses C like syntax
+	*** each shell has different command sets to interact with the OS
+-------------------------------------------------------------------------------
+
+
+/* Why use a Shell? */
+
+- avoid repetitive work, automate stuff
+- add new functionality to the existing shell (implement new shell commands)
+-------------------------------------------------------------------------------
+
+
+/* Bash scripts */
+
+- made of specific shell keywords, commands, or functions
+- named with a ".sh" file ending
+- MUST start with "#!/bin/bash"
+- Run a new script by changing the 'x' bit with "chmod +x"
+
+- windows terminates each line with CR/LF, while linux uses CR
+*** may get errors from this discrepancy
+**** use "dos2unix <file1>" to convert the windows/mac version to UNIX
+
+- bash is VERY white space sensitive!
+-------------------------------------------------------------------------------
+
+
+/* list of commands */
+
+# 		- comment
+X=dog		- creates variable X (no space!)
+echo $X 	- use variable X
+$1,$2..		- passed input parameters (argv[] or function inputs)
+echo		- prints something 
+printf		- like C printf command
+read		- reads from stdin
+directory='pwd' - executes the command in the quotes
+let Y+=1	- use complex math operations
+< <= == => >	- STRING COMPARISONS
+-lt -gt -le -ge -eq -ne 	- NUMERIC COMPARISONS
+-------------------------------------------------------------------------------
+
+
+/* script functions */
+
+How to call a function and get the output value:
+--- For a function named 'returnFun'
+--- result="$(returnFun)" ---
+-------------------------------------------------------------------------------
+
+
+

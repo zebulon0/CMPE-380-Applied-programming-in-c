@@ -1,0 +1,248 @@
+---------------------------------
+-				-
+-	Prelab.txt		-
+-	Zeb Hollinger		-
+-				-
+---------------------------------
+
+/* fopen() */
+Opens a file and returns a 'handle' to the file. Reads text ascii text and
+binary files. Error (mem leak) when forgetting to close an open file.
+Error (unpredictable results) when opening an already open file for the 2nd
+time.
+
+ASCII: read(r) write(w) append(a)
+BINARY: read(rb) write(wb) append(ab)
+-----------------------------------------------------------------------------
+
+
+/* fread() */
+Takes a file handle as 'input' and turns it into a buffer.
+  	-nRead : returns the numebr of objects read
+	-nRead < BufferSize (all data from file was read)
+	-nRead = BufferSize (buffer was filled up,
+			    not sure if the entire file was read)
+-----------------------------------------------------------------------------
+
+
+/* fseek() */
+Moves the cursor for the r/w head to wherever specified in the file. 
+	-returns int
+	-ftell() returns the current value of the file pointer
+-----------------------------------------------------------------------------
+
+
+/* stat() */
+Returns stats of the actual file (size, creation date, r/w/x status).
+Requires additional include file "sys/stat.h"
+	-takes in pointer to stats data structure and file name
+	-returns 0 for success and results updated in the pointer
+-----------------------------------------------------------------------------
+
+
+/* scanf() */
+Used to parse inputs... scanf(), fscanf(), sscanf()
+	-returns int, either number of objects converted, or [EOF or -1] 
+	 for error
+
+
+
+/* lab_a.c scanf() functionality*/
+The conversion for 1 and 2.2 worked fine, but when I added my name to convert
+it kept looping infinitely and kept converting the previous 2.2 value.
+
+After adding error checking... 1 & 2.2 test cases worked and didn't break the
+loop, when I typed my name, it returned -1 and ended the program
+
+-----------------------------------------------------------------------------
+
+
+/* fgets() */
+Reads the input buffer. Returns a pointer to the contents of the buffer.
+	-returns NULL if buffer is empty
+-----------------------------------------------------------------------------
+
+
+/* strtok() */
+Parses a buffer and returns pointers to each parsed segment from that buffer.
+	-can't read a trailing trailing white space
+	-destroys the buffer as it reads it
+	-returns NULL when done
+
+
+/* lab_b.c printing out command line inputs for a program */
+
+argc: 3
+argv[1]: hello
+argv[2]: world
+env[0]: GNUPLOT_DEFAULT_DDFONT=DejaVuSans.ttf
+env[1]: SPACK_ROOT=/tools/spack
+env[2]: HOSTNAME=eng-2500-08
+env[3]: DETECTOS_OS=RHEL
+env[4]: TERM=xterm
+env[5]: SHELL=/bin/bash
+env[6]: HISTSIZE=1000
+env[7]: SSH_CLIENT=98.10.240.95 53667 22
+env[8]: QTDIR=/usr/lib64/qt-3.3
+env[9]: QTINC=/usr/lib64/qt-3.3/include
+env[10]: SSH_TTY=/dev/pts/0
+env[11]: QT_GRAPHICSSYSTEM_CHECKED=1
+env[12]: USER=zah1276
+env[13]: LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=01;05;37;41:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=01;36:*.au=01;36:*.flac=01;36:*.mid=01;36:*.midi=01;36:*.mka=01;36:*.mp3=01;36:*.mpc=01;36:*.ogg=01;36:*.ra=01;36:*.wav=01;36:*.axa=01;36:*.oga=01;36:*.spx=01;36:*.xspf=01;36:
+env[14]: GDFONTPATH=/usr/share/fonts/dejavu
+env[15]: DETECTOS_OSSP=
+env[16]: SOURCED_RC_SH=true
+env[17]: MAIL=/var/spool/mail/zah1276
+env[18]: PATH=/tools/spack/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/tools/bin:/home/zah1276/.local/bin:/home/zah1276/bin
+env[19]: DETECTOS_OSVERSION=7
+env[20]: PWD=/home/zah1276/Lab12/Lab12/prelab
+env[21]: _LMFILES_=/etc/modulefiles/tools-dir:/tools/Modules/modulefiles.meta/module_default:/tools/Modules/modulefiles/system_defaults:/tools/Modules/modulefiles.meta/module_rhel7:/tools/Modules/modulefiles.meta/module_class
+env[22]: LANG=en_US.UTF-8
+env[23]: MODULEPATH=/tools/spack/share/spack/modules/linux-rhel7-x86_64:/usr/share/Modules/modulefiles:/etc/modulefiles:/tools/Modules/modulefiles.meta:/tools/Modules/modulefiles:/tools/Modules/modulefiles.rhel7:/tools/Modules/modulefiles.class
+env[24]: LOADEDMODULES=tools-dir:module_default:system_defaults:module_rhel7:module_class
+env[25]: DETECTOS_PM_COMMAND=yum install -y
+env[26]: HISTCONTROL=ignoredups
+env[27]: KRB5CCNAME=FILE:/tmp/krb5cc_40376_NP7Gtv
+env[28]: SHLVL=1
+env[29]: HOME=/home/zah1276
+env[30]: DIRNEWSDIR=/shared/rc/dirnews/
+env[31]: LOGNAME=zah1276
+env[32]: QTLIB=/usr/lib64/qt-3.3/lib
+env[33]: XDG_DATA_DIRS=/home/zah1276/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+env[34]: SSH_CONNECTION=98.10.240.95 53667 129.21.154.22 22
+env[35]: MODULESHOME=/usr/share/Modules
+env[36]: LESSOPEN=||/usr/bin/lesspipe.sh %s
+env[37]: DISPLAY=localhost:10.0
+env[38]: DETECTOS_PM_NAME=yum
+env[39]: CUDA_CACHE_MAXSIZE=4294967296
+env[40]: BASH_FUNC__spack_shell_wrapper()=() {  for var in LD_LIBRARY_PATH DYLD_LIBRARY_PATH DYLD_FALLBACK_LIBRARY_PATH;
+ do
+ eval "if [ -n \"\${${var}-}\" ]; then export SPACK_$var=\${${var}}; fi";
+ done;
+ if [ -n "${ZSH_VERSION:-}" ]; then
+ emulate -L sh;
+ fi;
+ _sp_flags="";
+ while [ ! -z ${1+x} ] && [ "${1#-}" != "${1}" ]; do
+ _sp_flags="$_sp_flags $1";
+ shift;
+ done;
+ if [ -n "$_sp_flags" ] && [ "${_sp_flags#*h}" != "${_sp_flags}" ] || [ "${_sp_flags#*V}" != "${_sp_flags}" ]; then
+ command spack $_sp_flags "$@";
+ return;
+ fi;
+ _sp_subcommand="";
+ if [ ! -z ${1+x} ]; then
+ _sp_subcommand="$1";
+ shift;
+ fi;
+ case $_sp_subcommand in 
+ "cd")
+ _sp_arg="";
+ if [ -n "$1" ]; then
+ _sp_arg="$1";
+ shift;
+ fi;
+ if [ "$_sp_arg" = "-h" ] || [ "$_sp_arg" = "--help" ]; then
+ command spack cd -h;
+ else
+ LOC="$(spack location $_sp_arg "$@")";
+ if [ -d "$LOC" ]; then
+ cd "$LOC";
+ else
+ return 1;
+ fi;
+ fi;
+ return
+ ;;
+ "env")
+ _sp_arg="";
+ if [ -n "$1" ]; then
+ _sp_arg="$1";
+ shift;
+ fi;
+ if [ "$_sp_arg" = "-h" ] || [ "$_sp_arg" = "--help" ]; then
+ command spack env -h;
+ else
+ case $_sp_arg in 
+ activate)
+ _a=" $@";
+ if [ -z ${1+x} ] || [ "${_a#* --sh}" != "$_a" ] || [ "${_a#* --csh}" != "$_a" ] || [ "${_a#* -h}" != "$_a" ] || [ "${_a#* --help}" != "$_a" ]; then
+ command spack env activate "$@";
+ else
+ eval $(command spack $_sp_flags env activate --sh "$@");
+ fi
+ ;;
+ deactivate)
+ _a=" $@";
+ if [ "${_a#* --sh}" != "$_a" ] || [ "${_a#* --csh}" != "$_a" ]; then
+ command spack env deactivate "$@";
+ else
+ if [ -n "$*" ]; then
+ command spack env deactivate -h;
+ else
+ eval $(command spack $_sp_flags env deactivate --sh);
+ fi;
+ fi
+ ;;
+ *)
+ command spack env $_sp_arg "$@"
+ ;;
+ esac;
+ fi;
+ return
+ ;;
+ "load" | "unload")
+ _a=" $@";
+ if [ "${_a#* --sh}" != "$_a" ] || [ "${_a#* --csh}" != "$_a" ] || [ "${_a#* -h}" != "$_a" ] || [ "${_a#* --help}" != "$_a" ]; then
+ command spack $_sp_flags $_sp_subcommand "$@";
+ else
+ eval $(command spack $_sp_flags $_sp_subcommand --sh "$@" ||                     echo "return 1");
+ fi
+ ;;
+ *)
+ command spack $_sp_flags $_sp_subcommand "$@"
+ ;;
+ esac
+}
+env[41]: BASH_FUNC_module()=() {  eval `/usr/bin/modulecmd bash $*`
+}
+env[42]: BASH_FUNC_spack()=() {  : this is a shell function from: /tools/spack/share/spack/setup-env.sh;
+ : the real spack script is here: /tools/spack/bin/spack;
+ _spack_shell_wrapper "$@";
+ return $?
+}
+env[43]: _=./lab_b
+env[44]: OLDPWD=/home/zah1276/Lab12/Lab12
+-----------------------------------------------------------------------------
+
+
+/* Qsort() */
+Linear array sorting function. Sorts 1D arrays of data. 
+	-uses a user-defined compare function for sorting
+	-Qsort() found in "stdlib.h"
+	-compare function returns -1, 1, or 0 based on comparison
+
+
+/* lab_c.c */
+
+./lab_c
+Error: No input found
+
+./lab_c -1
+Error: Please specify a positive number
+
+./lab_c 6
+     -49.9
+       2.1
+      26.5
+      30.2
+      39.7
+      49.2
+
+./lab_c 1 2
+Error: Too many arguments
+-----------------------------------------------------------------------------
+
+
+

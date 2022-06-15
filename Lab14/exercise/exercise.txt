@@ -1,0 +1,59 @@
+/* lab_a.sh */
+
+The variable is dog cat
+Enter a number
+The number is 4
+4 is greater than 3
+4 plus 2 is 6
+4 plus 1 is 5
+1
+2
+3
+item processed: one
+item processed: two
+item processed: three
+Enter dog (or not)
+dog != not
+Enter a number [1-3]
+Entered 'other'
+Current directory: exercise.txt lab_a.sh lab_b.sh lab_c.sh lab_d.sh
+-----------------------------------------------------------------------------
+
+
+/* lab_b.sh */
+
+Calling parmfun with 2 parameters: one two
+In the function, the passed parameters are: one two
+before calling globVar: one two
+Entered globVar one two
+Leaving globVar dog cat
+after calling globVar: dog cat
+calling returnNum
+The result was: 999
+-----------------------------------------------------------------------------
+
+
+/* what does lab_c.sh do? */
+
+lab_c is a simple TUI implemented with bash shell scripting
+it uses a infinite while loop and continues until the user enters a '4'
+which is the exit command.
+
+- uses boolean to control infinite loop
+- uses clear command
+- uses nano for text editor
+- uses ; to write multiple commands in one line of code
+-----------------------------------------------------------------------------
+
+
+/* what does lab_d.sh do? */
+
+lab_d gets a list of all files in the current directory and then uses
+a for loop to read through each file and count the total amount of
+lines in each file. The results are then reported.
+
+- uses local
+- uses function calls and passes vars as parameters
+- does complex math with vars to increment another var
+- calls complex command that uses piping to get the line count of the file
+-----------------------------------------------------------------------------

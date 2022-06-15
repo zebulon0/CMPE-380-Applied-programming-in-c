@@ -1,0 +1,215 @@
+-------------------------
+-			-
+-	exercise.txt	-
+-	Zeb Hollinger	-
+-			-
+-------------------------
+
+/* LAB_D */
+
+./lab_d
+Error: No input found
+
+./lab_d -1
+Error: Please specify a positive number
+
+./lab_d 6
+     -49.9        2.1
+     -28.0      -12.0
+      22.9      -31.6
+      22.9       46.9
+      26.5       49.2
+      39.7       30.2
+
+./lab_d 1 2
+Error: Too many arguments
+-----------------------------------------------------------------------------
+
+
+
+
+/* LAB_E */
+
+==16689== Memcheck, a memory error detector
+==16689== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==16689== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==16689== Command: ././lab_e
+==16689== 
+==16689== Invalid write of size 1
+==16689==    at 0x4E9240A: _IO_vfscanf (in /usr/lib64/libc-2.17.so)
+==16689==    by 0x4EA3098: __isoc99_scanf (in /usr/lib64/libc-2.17.so)
+==16689==    by 0x4007CC: main (lab_e.c:35)
+==16689==  Address 0x5205049 is 0 bytes after a block of size 9 alloc'd
+==16689==    at 0x4C29F73: malloc (vg_replace_malloc.c:309)
+==16689==    by 0x400765: main (lab_e.c:18)
+==16689== 
+==16689== Invalid read of size 1
+==16689==    at 0x4C2D104: strlen (vg_replace_strmem.c:461)
+==16689==    by 0x4007D8: main (lab_e.c:37)
+==16689==  Address 0x5205049 is 0 bytes after a block of size 9 alloc'd
+==16689==    at 0x4C29F73: malloc (vg_replace_malloc.c:309)
+==16689==    by 0x400765: main (lab_e.c:18)
+==16689== 
+==16689== Invalid read of size 1
+==16689==    at 0x4E84079: vfprintf (in /usr/lib64/libc-2.17.so)
+==16689==    by 0x4E8A4C8: printf (in /usr/lib64/libc-2.17.so)
+==16689==    by 0x4007F1: main (lab_e.c:37)
+==16689==  Address 0x5205049 is 0 bytes after a block of size 9 alloc'd
+==16689==    at 0x4C29F73: malloc (vg_replace_malloc.c:309)
+==16689==    by 0x400765: main (lab_e.c:18)
+==16689== 
+The parsing string '%s'
+
+Enter string or 'q' to exit: 
+String '1234567' length=7
+Enter string or 'q' to exit: 
+String '12345678' length=8
+Enter string or 'q' to exit: 
+String '123456789' length=9
+Enter string or 'q' to exit: 
+String 'q' length=1
+==16689== 
+==16689== HEAP SUMMARY:
+==16689==     in use at exit: 0 bytes in 0 blocks
+==16689==   total heap usage: 1 allocs, 1 frees, 9 bytes allocated
+==16689== 
+==16689== All heap blocks were freed -- no leaks are possible
+==16689== 
+==16689== For lists of detected and suppressed errors, rerun with: -s
+==16689== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)
+
+All string sizes were printed correctly. The errors occurred when the '123456789'
+string was entered. String is malloced as +1 instead of just MAX_STR because we
+(the user) hits enter to signal that the string is done. This adds a \n at the
+end of the string which increases the size by 1 for all strings entered.
+-----------------------------------------------------------------------------
+
+
+
+
+/* LAB_E modifications */
+
+==22581== Memcheck, a memory error detector
+==22581== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==22581== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==22581== Command: ././lab_e
+==22581== 
+The parsing string '%8s'
+
+Enter string or 'q' to exit: 
+String '1234567' length=7
+Enter string or 'q' to exit: 
+String '12345678' length=8
+Enter string or 'q' to exit: 
+String '12345678' length=8
+Enter string or 'q' to exit: 
+String '9' length=1
+Enter string or 'q' to exit: 
+String 'q' length=1
+==22581== 
+==22581== HEAP SUMMARY:
+==22581==     in use at exit: 0 bytes in 0 blocks
+==22581==   total heap usage: 1 allocs, 1 frees, 9 bytes allocated
+==22581== 
+==22581== All heap blocks were freed -- no leaks are possible
+==22581== 
+==22581== For lists of detected and suppressed errors, rerun with: -s
+==22581== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+There weren't any errors, but the output for the '123456789' string that was
+entered was printed out as '12345678' because of the use of the sprintf()
+function that is set to the MAX_STR length of 8 characters.
+-----------------------------------------------------------------------------
+
+
+
+/* LAB_E with -DMAX_STR=7 */
+
+==25712== Memcheck, a memory error detector
+==25712== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==25712== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==25712== Command: ././lab_e
+==25712== 
+The parsing string '%7s'
+
+Enter string or 'q' to exit: 
+String '1234567' length=7
+Enter string or 'q' to exit: 
+String '1234567' length=7
+Enter string or 'q' to exit: 
+String '8' length=1
+Enter string or 'q' to exit: 
+String '1234567' length=7
+Enter string or 'q' to exit: 
+String '89' length=2
+Enter string or 'q' to exit: 
+String 'q' length=1
+==25712== 
+==25712== HEAP SUMMARY:
+==25712==     in use at exit: 0 bytes in 0 blocks
+==25712==   total heap usage: 1 allocs, 1 frees, 8 bytes allocated
+==25712== 
+==25712== All heap blocks were freed -- no leaks are possible
+==25712== 
+==25712== For lists of detected and suppressed errors, rerun with: -s
+==25712== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+No errors this time either, the max string size was defined as 7 characters
+this time so all the strings were cutoff at 7 characters. The output does
+have the extra lines of '8' and '89' which weren't manually entered, they
+were extra characters left in the input buffer with a \n following it so the
+program read it as a string that was entered by the user.
+-----------------------------------------------------------------------------
+
+
+/* LAB_F */
+
+./lab_f
+Read: '1 2 3'
+Read: '4    5 6    7     '
+Read: '8 9'
+Read: ''
+Read: ''
+Read: ''
+3 parameters 1 2 3
+3 parameters 4 5 6
+3 parameters 7 8 9
+
+This is correct because the items that is says it read match the contents of
+the file 'data.txt' perfectly. It also took 3 input parameters at a time, no
+matter what line they were on. If it only had 2 input params, it would keep 
+reading through the file until another input param was found (read).
+-----------------------------------------------------------------------------
+
+
+/* LAB_F MEM TEST */
+==17090== Memcheck, a memory error detector
+==17090== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==17090== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==17090== Command: ./lab_f
+==17090== 
+Read: '1 2 3'
+Read: '4    5 6    7     '
+Read: '8 9'
+Read: ''
+Read: ''
+Read: ''
+3 parameters 1 2 3
+3 parameters 4 5 6
+3 parameters 7 8 9
+==17090== 
+==17090== HEAP SUMMARY:
+==17090==     in use at exit: 0 bytes in 0 blocks
+==17090==   total heap usage: 2 allocs, 2 frees, 824 bytes allocated
+==17090== 
+==17090== All heap blocks were freed -- no leaks are possible
+==17090== 
+==17090== For lists of detected and suppressed errors, rerun with: -s
+==17090== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+No errors which is great! The program works as it should
+-----------------------------------------------------------------------------
+
+
+
+
